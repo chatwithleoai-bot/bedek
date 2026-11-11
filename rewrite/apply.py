@@ -1,4 +1,6 @@
 import json,glob,re,sys
+sys.path.insert(0,'rewrite')
+from detach import keep
 p='findings_data.js'
 s=open(p,encoding='utf8').read()
 pre=s[:s.find('{')];post=s[s.rfind('}')+1:]
@@ -12,6 +14,10 @@ for f in d['findings']:
         f['name'],f['rec']=rw[f['id']]; f['reworded']=True; n+=1
     for k in ('name','rec','std'):
         if f.get(k): f[k]=re.sub(r'[ \t]{2,}',' ',f[k]).strip()
+det=0
+for f in d['findings']:
+    if f.get('std_image') and not keep(f): f.pop('std_image'); det+=1
+print('detached',det)
 before=len(d['findings'])
 d['findings']=[f for f in d['findings'] if f['id'] not in dele]
 open(p,'w',encoding='utf8').write(pre+json.dumps(d,ensure_ascii=False,indent=2)+post)
