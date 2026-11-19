@@ -7,282 +7,146 @@
   <style>
     :root {
       --primary: #1e3a8a;
-      --primary-light: #3b82f6;
+      --primary-light: #2563eb;
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
       --success: #16a34a;
-      --success-bg: #dcfce7;
       --danger: #dc2626;
-      --danger-bg: #fee2e2;
     }
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      margin: 0;
-      padding: 0;
-      padding-bottom: 90px;
+      margin: 0; padding: 0 0 95px 0;
       direction: rtl;
     }
     header {
       background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
       color: white;
-      padding: 18px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 14px 14px 10px 14px;
+      position: sticky; top: 0; z-index: 100;
       box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .header-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .header-sub {
-      font-size: 0.8rem;
-      opacity: 0.9;
+    .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .header-title { font-size: 1.15rem; font-weight: 800; margin: 0; }
+    .header-sub { font-size: 0.78rem; opacity: 0.9; }
+    .day-alert {
+      background: #fef08a; color: #854d0e;
+      font-size: 0.76rem; font-weight: 700;
+      padding: 5px 8px; border-radius: 6px;
+      margin-top: 4px; display: block;
     }
     .status-bar {
-      display: flex;
-      gap: 10px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 0.85rem;
-      justify-content: space-around;
-      font-weight: 600;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      display: flex; gap: 6px;
+      background: rgba(255,255,255,0.16);
+      border-radius: 8px; padding: 6px 10px;
+      font-size: 0.8rem; justify-content: space-around;
+      font-weight: 700; margin-top: 6px;
     }
     .badge-v { color: #86efac; }
     .badge-x { color: #fca5a5; }
     .badge-pending { color: #cbd5e1; }
     
     .filters-bar {
-      display: flex;
-      gap: 8px;
-      padding: 10px 16px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 98px;
-      z-index: 90;
-      overflow-x: auto;
+      display: flex; gap: 6px; padding: 8px 12px;
+      background: #ffffff; border-bottom: 1px solid var(--border);
+      position: sticky; top: 110px; z-index: 90;
+      overflow-x: auto; white-space: nowrap;
     }
     .filter-btn {
-      flex: 1;
-      padding: 8px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: #f1f5f9;
-      color: var(--text);
-      font-size: 0.82rem;
-      font-weight: 600;
+      padding: 6px 12px; border-radius: 16px;
+      border: 1px solid var(--border); background: #f1f5f9;
+      color: var(--text); font-size: 0.78rem; font-weight: 700;
       cursor: pointer;
-      white-space: nowrap;
-      text-align: center;
     }
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-    
-    .content {
-      padding: 12px 16px;
-      max-width: 650px;
-      margin: 0 auto;
-    }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .filter-btn.filter-day { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .filter-btn.filter-day.active { background: #d97706; color: white; }
+
+    .content { padding: 10px 12px; max-width: 650px; margin: 0 auto; }
     .section-card {
-      background: var(--card-bg);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      margin-bottom: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      background: var(--card-bg); border-radius: 12px;
+      border: 1px solid var(--border); margin-bottom: 14px;
+      overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
     .section-header {
-      background: #f8fafc;
-      padding: 12px 16px;
+      padding: 10px 14px; font-weight: 800; font-size: 0.95rem;
+      display: flex; justify-content: space-between; align-items: center;
       border-bottom: 1px solid var(--border);
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--primary);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
-    .section-stats {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .item-row {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s ease;
-    }
-    .item-row:last-child {
-      border-bottom: none;
-    }
-    .item-row.state-pass {
-      background: #f0fdf4;
-    }
-    .item-row.state-fail {
-      background: #fef2f2;
-    }
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .item-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.35;
-    }
-    .item-desc {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-      margin-bottom: 12px;
+    .section-day { background: #fffbeb; color: #b45309; border-right: 4px solid #f59e0b; }
+    .section-interior { background: #f8fafc; color: var(--primary); border-right: 4px solid var(--primary-light); }
+    .section-actions { display: flex; align-items: center; gap: 6px; }
+    .btn-add-item {
+      background: white; border: 1px solid var(--border);
+      border-radius: 6px; padding: 3px 8px; font-size: 0.74rem;
+      font-weight: 700; cursor: pointer; color: var(--text);
     }
     
-    .action-group {
-      display: flex;
-      gap: 8px;
-    }
+    .item-row { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    .item-row:last-child { border-bottom: none; }
+    .item-row.state-pass { background: #f0fdf4; }
+    .item-row.state-fail { background: #fef2f2; }
+    
+    .item-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+    .item-title { font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.35; flex: 1; }
+    .item-menu-btn { background: none; border: none; color: var(--text-muted); font-size: 0.95rem; cursor: pointer; padding: 2px 4px; }
+    .item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 10px; }
+    
+    .action-group { display: flex; gap: 8px; }
     .btn-action {
-      flex: 1;
-      height: 44px;
-      border-radius: 10px;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      font-size: 1rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.12s ease;
+      flex: 1; height: 42px; border-radius: 8px;
+      border: 1.5px solid var(--border); background: #ffffff;
+      font-size: 0.95rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; cursor: pointer;
     }
-    .btn-action:active {
-      transform: scale(0.97);
-    }
-    .btn-pass {
-      color: #15803d;
-    }
-    .btn-pass.active {
-      background: var(--success);
-      color: white;
-      border-color: var(--success);
-      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
-    }
-    .btn-fail {
-      color: #b91c1c;
-    }
-    .btn-fail.active {
-      background: var(--danger);
-      color: white;
-      border-color: var(--danger);
-      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
-    }
+    .btn-action:active { transform: scale(0.97); }
+    .btn-pass { color: #15803d; }
+    .btn-pass.active { background: var(--success); color: white; border-color: var(--success); }
+    .btn-fail { color: #b91c1c; }
+    .btn-fail.active { background: var(--danger); color: white; border-color: var(--danger); }
     
     .note-input {
-      width: 100%;
-      margin-top: 10px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      font-size: 0.82rem;
-      background: #fdfdfd;
-      font-family: inherit;
-      display: none;
+      width: 100%; margin-top: 8px; padding: 8px;
+      border-radius: 6px; border: 1px solid var(--border);
+      font-size: 0.82rem; background: #ffffff;
+      display: none; font-family: inherit;
     }
-    .state-fail .note-input, .has-note .note-input {
-      display: block;
+    .state-fail .note-input, .has-note .note-input { display: block; }
+    
+    .btn-add-section {
+      background: #ffffff; border: 1.5px dashed var(--primary-light);
+      color: var(--primary); padding: 10px 16px; border-radius: 10px;
+      font-weight: 700; font-size: 0.85rem; cursor: pointer; width: 100%; margin: 10px 0;
     }
     
     .bottom-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      border-top: 1px solid var(--border);
-      padding: 10px 16px;
-      display: flex;
-      gap: 10px;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
-      z-index: 100;
-      max-width: 650px;
-      margin: 0 auto;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white; border-top: 1px solid var(--border);
+      padding: 8px 12px; display: flex; gap: 8px;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.06); z-index: 100;
+      max-width: 650px; margin: 0 auto;
     }
     .bottom-btn {
-      flex: 1;
-      height: 44px;
-      border-radius: 10px;
-      border: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      flex: 1; height: 44px; border-radius: 8px; border: none;
+      font-weight: 800; font-size: 0.88rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
     }
-    .btn-share {
-      background: #25D366;
-      color: white;
-    }
-    .btn-reset {
-      background: #f1f5f9;
-      color: #475569;
-      border: 1px solid var(--border);
-      flex: 0.5;
-    }
+    .btn-share { background: #25D366; color: white; }
+    .btn-reset { background: #f1f5f9; color: #475569; border: 1px solid var(--border); flex: 0.45; }
     
     .toast {
-      position: fixed;
-      bottom: 75px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e293b;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-      z-index: 200;
+      position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%);
+      background: #0f172a; color: white; padding: 8px 16px;
+      border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 200;
     }
-    .toast.show {
-      opacity: 1;
-    }
+    .toast.show { opacity: 1; }
   </style>
 </head>
 <body>
@@ -291,349 +155,41 @@
     <div class="header-top">
       <div>
         <h1 class="header-title">צ'ק-ליסט בדיקת דירה</h1>
-        <div class="header-sub">צ. ביקורת מבנים | שמירה אוטומטית מלאה</div>
+        <div class="header-sub">צ. ביקורת מבנים | שמירה מקומית אוטומטית</div>
       </div>
-      <div id="save-indicator" style="font-size: 0.72rem; opacity: 0.85;">נשמר ✓</div>
+      <div id="save-indicator" style="font-size: 0.72rem; opacity: 0.9;">נשמר ✓</div>
+    </div>
+    <div class="day-alert">
+      ☀️ בדיקות 1–5: חובה לבצע באור יום (16:00 עד 17:30)
     </div>
     <div class="status-bar">
-      <div class="badge badge-v">תקין (✓): <span id="count-v">0</span></div>
-      <div class="badge badge-x">ליקוי (✗): <span id="count-x">0</span></div>
-      <div class="badge badge-pending">נשאר: <span id="count-pending">0</span></div>
+      <div class="badge-v">תקין: <span id="count-v">0</span></div>
+      <div class="badge-x">ליקוי: <span id="count-x">0</span></div>
+      <div class="badge-pending">נותר: <span id="count-pending">0</span></div>
       <div>סה"כ: <span id="count-total">0</span></div>
     </div>
   </header>
 
   <div class="filters-bar">
     <button class="filter-btn active" onclick="setFilter('all', this)">הכל</button>
-    <button class="filter-btn" onclick="setFilter('fail', this)">רק ליקויים ✗</button>
+    <button class="filter-btn filter-day" onclick="setFilter('day', this)">☀️ רק אור יום (16:00-17:30)</button>
+    <button class="filter-btn" onclick="setFilter('interior', this)">💡 בדיקות פנים ומכשור</button>
+    <button class="filter-btn" onclick="setFilter('fail', this)">✗ רק ליקויים</button>
     <button class="filter-btn" onclick="setFilter('pending', this)">טרם נבדק</button>
-    <button class="filter-btn" onclick="setFilter('pass', this)">תקינים ✓</button>
   </div>
 
-  <div class="content" id="checklist-container">
-    <!-- תוכן ייטען על ידי JS -->
+  <div class="content">
+    <div id="checklist-container"></div>
+    <button class="btn-add-section" onclick="promptAddSection()">+ הוסף חלל / אזור בדיקה חדש</button>
   </div>
 
   <div class="bottom-bar">
-    <button class="bottom-btn btn-share" onclick="copyFailuresSummary()">
-      📋 העתק ליקויים לוואטסאפ
-    </button>
-    <button class="bottom-btn btn-reset" onclick="resetAll()">
-      איפוס
-    </button>
+    <button class="bottom-btn btn-share" onclick="copyFailuresSummary()">📋 העתק ליקויים לוואטסאפ</button>
+    <button class="bottom-btn btn-reset" onclick="resetAll()">איפוס</button>
   </div>
 
   <div class="toast" id="toast">הועתק ללוח!</div>
 
-  <script>
-    const CHECKLIST_DATA = [
-      {
-        id: "parking",
-        title: "1. חנייה",
-        items: [
-          { id: "p1", title: "שיפועי ניקוז ומים", desc: "שיפוע לכיוון תעלות ניקוז (סף מזערי 1.0%), בדיקת היקוות שלוליות ומים עומדים." },
-          { id: "p2", title: "מידות תא החניה", desc: "רוחב נטו (2.55 מ' עד 2.70 מ' בצמוד לקיר), אורך (5.00 מ'), מרווחי ביטחון מעמודים ומכשולים." },
-          { id: "p3", title: "מחסום גלגלים (פגוש עצירה)", desc: "קיום מעצור מול קיר קשיח, עיגון יציב ברצפה, מרחק נכון מהקיר למניעת פגיעת פגוש." },
-          { id: "p4", title: "גובה פנוי", desc: "מדידת גובה מינימלי תחתון מתחת לתעלות וצנרת (לפחות 2.20 מ')." },
-          { id: "p5", title: "מערכות וסימון", desc: "שילוט ומספור חניה, סימון קווים, גלאי/מתז כיבוי אש, שלמות הבטון/אפוקסי." }
-        ]
-      },
-      {
-        id: "storage",
-        title: "2. מחסן",
-        items: [
-          { id: "s1", title: "ליקויי צביעה וטיח", desc: "אחידות הגוון, קילופים, סדקים, גבשושיות ושאריות שפכטל." },
-          { id: "s2", title: "ניקיון וגמר", desc: "לכלוכים וכתמי צבע/רובה על גבי אביזרים, שקעים וריצוף." },
-          { id: "s3", title: "מישוריות הריצוף", desc: "בליטות ושקיעות במפגשי אריחים (שן מעל 1 מ"מ), בדיקת פלס." },
-          { id: "s4", title: "כושר הדבקה וחלילות", desc: "הקשה על כלל האריחים לאיתור חללים ונקישות חלולות (ת"י 1555)." },
-          { id: "s5", title: "פתח אוורור", desc: "קיום פתח אוורור תקני (עליון/תחתון) עם רשת נגד מזיקים למניעת לחות ועובש." },
-          { id: "s6", title: "דלת המחסן", desc: "נעילה, מנגנון פתיחה וסגירה חלק, מרווח תחתון תקין (3–5 מ"מ), שלמות משקוף וכנף." },
-          { id: "s7", title: "רטיבות ואיטום", desc: "בדיקת רטיבות קפילרית בתחתית הקירות, עובש, מליחות וריחות טחב." }
-        ]
-      },
-      {
-        id: "lobby",
-        title: "3. לובי בקומה (מבואה קומתית)",
-        items: [
-          { id: "l1", title: "ריצוף וחיפוי קירות", desc: "מישוריות, שלמות אריחים, רובה רציפה, היעדר חלילות." },
-          { id: "l2", title: "דלתות אש ומעברים", desc: "מנגנון סגירה עצמית (מחזיר שמן), אטמים תופחים, נעילה וידית בהלה תקנית." },
-          { id: "l3", title: "ארונות שירות (חשמל, מים, תקשורת)", desc: "סגירה ונעילה, שילוט תקני, איטום מעברי צנרת בין קומות." },
-          { id: "l4", title: "עמדת כיבוי אש ומתזים", desc: "גלגילון כיבוי, מטף, לחצן אזעקה, מתזים ושלמות ארון הכיבוי (ת"י 2206)." },
-          { id: "l5", title: "תאורת חירום ושילוט פליטה", desc: "פעולת גופי תאורת חירום ושלטי יציאה מוארים." }
-        ]
-      },
-      {
-        id: "living",
-        title: "4. סלון (ומרחב אירוח)",
-        items: [
-          { id: "lv1", title: "ריצוף ופנלים", desc: "מישוריות, שן בין אריחים, כושר הדבקה (חלילות), גוון רובה אחיד ושלמות פנלים." },
-          { id: "lv2", title: "קירות ותקרה", desc: "מישוריות טיח (בדיקת סרגל), סדקים נימיים, גליות בצבע ואחידות גימור." },
-          { id: "lv3", title: "ויטרינת יציאה למרפסת", desc: "פעולת כנפי אלומיניום, נעילה וגובלים, מברשות ואטמי EPDM, חריצי ניקוז במסילה." },
-          { id: "lv4", title: "זיגוג בטיחות", desc: "בדיקת זכוכית בטיחות (סימון תקן מחייב), שריטות, בועות ועכירות (ת"י 938)." },
-          { id: "lv5", title: "חשמל ותקשורת", desc: "תקינות שקעים ומפסקים, הארקה, גובה התקנה, שקעי טלוויזיה ורשת." },
-          { id: "lv6", title: "פתחי מיזוג אוויר", desc: "התקנה ישרה של תריסי אוויר (סלוטים), שלמות פתחי שירות למזגן." }
-        ]
-      },
-      {
-        id: "kitchen",
-        title: "5. מטבח",
-        items: [
-          { id: "k1", title: "ארונות ונגרות", desc: "יישור חזיתות ומרווחים, פעולת צירים וטריקה שקטה, שלמות ציפויים, סוקל אטום למים." },
-          { id: "k2", title: "משטח עבודה (שיש)", desc: "מישוריות, פילוס, שלמות לוחות, איטום מפגש שיש-חיפוי (מסטיק אנטי-בקטריאלי)." },
-          { id: "k3", title: "כיור ואינסטלציה", desc: "התקנת כיור נקייה, סיפון קשיח תקני (איסור סיפון שרשורי), ברז יציב, היעדר נזילות ולחץ מים." },
-          { id: "k4", title: "חיפוי קיר מעל שיש", desc: "גובה חיפוי תקני, הדבקה ללא חלילות, רובה אטומה." },
-          { id: "k5", title: "נקודות כוח לחשמל", desc: "מרחק שקעים תקני ממקור מים, שקעי כוח ייעודיים לתנור, מדיח ומקרר." },
-          { id: "k6", title: "אוורור ופתח קולט", desc: "פתח יציאה החוצה / הכנה לקולט אדים, בדיקת חלון מטבח." }
-        ]
-      },
-      {
-        id: "balcony",
-        title: "6. מרפסת שמש",
-        items: [
-          { id: "b1", title: "שיפועי ניקוז", desc: "שיפוע של 1.0% לפחות לכיוון נקז החרדון/קולטן (בדיקת זרימת מים ומניעת שלוליות)." },
-          { id: "b2", title: "הפרש גבהים (סף יציאה)", desc: "סף מוגבה של לפחות 2.5–5 ס"מ בין ריצוף פנים לריצוף חוץ למניעת חדירת גשם." },
-          { id: "b3", title: "מעקה בטיחות", desc: "גובה מעקה (לפחות 105 ס"מ עד גובה 1 מטר, ו-110 ס"מ מעל), יציבות עיגונים, מרווח מירבי 10 ס"מ (ת"י 1142)." },
-          { id: "b4", title: "נקזי מים ואיטום", desc: "נקז כפול (עליון ותחתון), פתיחת רשת הניקוז לבדיקת סתימות פסולת בניין, רולקות איטום." },
-          { id: "b5", title: "נקודות חוץ", desc: "ברז גן ושסתום אל-חוזר, שקע מוגן מים (IP44 לפחות) עם מכסה." }
-        ]
-      },
-      {
-        id: "master_bedroom",
-        title: "7. חדר הורים",
-        items: [
-          { id: "mb1", title: "דלת כניסה לחדר", desc: "פתיחה, נעילה, כיוון צירים, מרווח תחתון (3–5 מ"מ), גומי אטימה במשקוף, מעצור (סטופר)." },
-          { id: "mb2", title: "חלונות ואלומיניום", desc: "מסילות, נעילת כנפיים, איטום גומיות EPDM, חריצי ניקוז, תריס גלילה חשמלי/ידני." },
-          { id: "mb3", title: "ריצוף וקירות", desc: "מישוריות, בדיקת חלילות, פנלים, איכות צבע, סדקים ורטיבות במפגשי קירות וספים." },
-          { id: "mb4", title: "חשמל ותאורה", desc: "שקעים לצדי מיטה (גובה ומיקום), הדלקה כפולה (מחלף), נקודת תקשורת וטלוויזיה." }
-        ]
-      },
-      {
-        id: "bath_master",
-        title: "8. מקלחת ושירותים (הורים / מרכזי)",
-        items: [
-          { id: "bt1", title: "שיפועי רצפה ומקלחון", desc: "שיפוע 1.0%–1.5% לכיוון קולטני הניקוז, אטימות סף מקלחון, מניעת זליגת מים לחלל החדר." },
-          { id: "bt2", title: "אסלה ומכל הדחה (ניאגרה)", desc: "מרחבי שימוש סביב אסלה (לפחות 80 ס"מ כולל), יציבות, הדחה כפולה, היעדר נזילות סמויות." },
-          { id: "bt3", title: "ארון אמבטיה, כיור וברז", desc: "יציבות ארון מרחף, איטום סיליקון בין כיור למשטח/קיר, סיפון קשיח, לחץ מים חמים/קרים." },
-          { id: "bt4", title: "חיפוי קירות עד תקרה", desc: "מישוריות אריחים, שלמות רובה, היעדר חלילות בהקשה." },
-          { id: "bt5", title: "חשמל ובטיחות רטיבות", desc: "מרחקי בטיחות של שקעים ומפסקים ממקור מים (IPX4), מפסק מחוץ לחדר או מוגן מים." },
-          { id: "bt6", title: "אוורור", desc: "ונטה תקנית הפועלת עם מתג/השהיה, או חלון פתיחה תקין." }
-        ]
-      },
-      {
-        id: "guest_toilet",
-        title: "9. שירותי אורחים",
-        items: [
-          { id: "gt1", title: "אסלה ואינסטלציה", desc: "קיבוע יציב, פעולת הדחה, אטימות אטמים ושסתום כניסה." },
-          { id: "gt2", title: "כיור ונטילת ידיים", desc: "מרחב גישה נוח לשימוש, ברז יציב, ניקוז חופשי ללא דליפה." },
-          { id: "gt3", title: "איטום ורטיבות", desc: "בדיקת לחות בקירות סביב הקבועות, איטום מפגש אסלה/כיור לרצפה ולקיר." },
-          { id: "gt4", title: "דלת ושחרור חירום", desc: "מנעול תפוס/פנוי עם אפשרות לפתיחת חירום חיצונית, מרווח תחתון תקני לאוורור." },
-          { id: "gt5", title: "אוורור", desc: "ונטה/צינור שרשורי תקין החוצה ללא חסימות." }
-        ]
-      },
-      {
-        id: "utility_room",
-        title: "10. חדר שירות (כביסה)",
-        items: [
-          { id: "u1", title: "נקודות מים ודלוחין", desc: "נקודת הזנת מים קרים למכונה, נקז דלוחין ייעודי בגובה תקני (לפחות 60 ס"מ מעל רצפה)." },
-          { id: "u2", title: "נקז רצפה ושיפועים", desc: "קיום קולטן רצפתי לחירום עם שיפוע מקומי לניקוז שטיפה/הצפה." },
-          { id: "u3", title: "חשמל וכוח", desc: "שקעי כוח ייעודיים למכונת כביסה ולמייבש, גובה תקני והארקה תקנית." },
-          { id: "u4", title: "אוורור", desc: "פתח או חלון לאוורור תקין ומניעת הצטברות אדי חום ולחות." }
-        ]
-      },
-      {
-        id: "laundry_hide",
-        title: "11. מסתור כביסה",
-        items: [
-          { id: "lh1", title: "רצפה ושיפועי ניקוז", desc: "שיפוע מובהק החוצה או לקולטן, היעדר שלוליות סביב מעמדי מנועי מזגן." },
-          { id: "lh2", title: "רפפות מסתור כביסה", desc: "שלמות רפפות אלומיניום, חיזוק יציב למבנה, אביזרי קצה לרפפות (ת"י 1509)." },
-          { id: "lh3", title: "מעקה/סף בטיחות", desc: "גובה סף פתח המסתור (לפחות 105 ס"מ להגנה מפני נפילה)." },
-          { id: "lh4", title: "צנרות ואיטום מעברים", desc: "איטום מעברי צנרת מיזוג אוויר וחשמל החודרים לדירה (מסטיק איטום למניעת חדירת גשם וציפורים)." },
-          { id: "lh5", title: "ניקוז מזגנים", desc: "צנרת ניקוז קשיחה למזגנים המחוברת לקו ניקוז מאסף ללא שפיכה חופשית." }
-        ]
-      }
-    ];
-
-    const STORAGE_KEY = "bedek_checklist_state_v1";
-    let state = {};
-    let currentFilter = "all";
-
-    function loadState() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          state = JSON.parse(saved);
-        }
-      } catch (e) {
-        console.error("Failed to load state", e);
-      }
-    }
-
-    function saveState() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        const ind = document.getElementById("save-indicator");
-        ind.textContent = "נשמר ✓";
-        setTimeout(() => { ind.textContent = "נשמר ✓"; }, 1500);
-      } catch (e) {
-        console.error("Failed to save state", e);
-      }
-    }
-
-    function setItemStatus(itemId, newStatus) {
-      if (!state[itemId]) state[itemId] = {};
-      if (state[itemId].status === newStatus) {
-        delete state[itemId].status;
-      } else {
-        state[itemId].status = newStatus;
-      }
-      saveState();
-      render();
-    }
-
-    function setItemNote(itemId, noteText) {
-      if (!state[itemId]) state[itemId] = {};
-      state[itemId].note = noteText;
-      saveState();
-    }
-
-    function setFilter(filter, btn) {
-      currentFilter = filter;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      render();
-    }
-
-    function render() {
-      const container = document.getElementById("checklist-container");
-      container.innerHTML = "";
-
-      let countV = 0;
-      let countX = 0;
-      let countTotal = 0;
-
-      CHECKLIST_DATA.forEach(section => {
-        let sectionItemsHtml = "";
-        let visibleCount = 0;
-        let secV = 0;
-        let secX = 0;
-
-        section.items.forEach(item => {
-          countTotal++;
-          const itemState = state[item.id] || {};
-          const status = itemState.status || null;
-          const note = itemState.note || "";
-
-          if (status === 'pass') { countV++; secV++; }
-          if (status === 'fail') { countX++; secX++; }
-
-          let isVisible = true;
-          if (currentFilter === 'fail' && status !== 'fail') isVisible = false;
-          if (currentFilter === 'pass' && status !== 'pass') isVisible = false;
-          if (currentFilter === 'pending' && status !== null) isVisible = false;
-
-          if (!isVisible) return;
-          visibleCount++;
-
-          const rowClass = status === 'pass' ? 'state-pass' : (status === 'fail' ? 'state-fail' : '');
-          const passActive = status === 'pass' ? 'active' : '';
-          const failActive = status === 'fail' ? 'active' : '';
-          const hasNoteClass = note ? 'has-note' : '';
-
-          sectionItemsHtml += `
-            <div class="item-row ${rowClass} ${hasNoteClass}" id="row-${item.id}">
-              <div class="item-header">
-                <div class="item-title">${item.title}</div>
-              </div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="action-group">
-                <button class="btn-action btn-pass ${passActive}" onclick="setItemStatus('${item.id}', 'pass')">
-                  ✓ תקין
-                </button>
-                <button class="btn-action btn-fail ${failActive}" onclick="setItemStatus('${item.id}', 'fail')">
-                  ✗ ליקוי
-                </button>
-              </div>
-              <input type="text" class="note-input" placeholder="הערה לליקוי / מיקום ספציפי..." 
-                value="${note}" oninput="setItemNote('${item.id}', this.value)">
-            </div>
-          `;
-        });
-
-        if (visibleCount > 0) {
-          const sectionEl = document.createElement("div");
-          sectionEl.className = "section-card";
-          sectionEl.innerHTML = `
-            <div class="section-header">
-              <span>${section.title}</span>
-              <span class="section-stats">✓ ${secV} | ✗ ${secX}</span>
-            </div>
-            ${sectionItemsHtml}
-          `;
-          container.appendChild(sectionEl);
-        }
-      });
-
-      document.getElementById("count-v").textContent = countV;
-      document.getElementById("count-x").textContent = countX;
-      document.getElementById("count-total").textContent = countTotal;
-      document.getElementById("count-pending").textContent = countTotal - (countV + countX);
-    }
-
-    function showToast(msg) {
-      const t = document.getElementById("toast");
-      t.textContent = msg;
-      t.classList.add("show");
-      setTimeout(() => t.classList.remove("show"), 2200);
-    }
-
-    function copyFailuresSummary() {
-      let failures = [];
-      CHECKLIST_DATA.forEach(section => {
-        let secFailures = [];
-        section.items.forEach(item => {
-          const itemState = state[item.id] || {};
-          if (itemState.status === 'fail') {
-            let line = "• " + item.title;
-            if (itemState.note) line += " (" + itemState.note + ")";
-            secFailures.push(line);
-          }
-        });
-        if (secFailures.length > 0) {
-          failures.push("*" + section.title + ":*
-" + secFailures.join("
-"));
-        }
-      });
-
-      if (failures.length === 0) {
-        showToast("אין ליקויים שסומנו ב-✗");
-        return;
-      }
-
-      const text = "*סיכום ליקויים שנמצאו בבדיקה:*
-
-" + failures.join("
-
-");
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("סיכום הליקויים הועתק ללוח!");
-      }).catch(() => {
-        showToast("נכשל בהעתקה אוטומטית");
-      });
-    }
-
-    function resetAll() {
-      if (confirm("האם לאפס את כל הסימונים ולהתחיל בדיקה חדשה?")) {
-        state = {};
-        saveState();
-        render();
-        showToast("הבדיקה אופסה");
-      }
-    }
-
-    // הפעלה ראשונית
-    loadState();
-    render();
-  </script>
+  <script src="checklist_data.js"></script>
 </body>
 </html>
