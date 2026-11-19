@@ -28585,6 +28585,38 @@ window.REPORTO_DB = {
       "ut": "",
       "up": null,
       "uq": null
+    },
+    {
+      "id": "2ebdd2fe-a438-46a0-8704-4bfe93e826ad",
+      "r": 0,
+      "c": 27,
+      "name": "היעדר מעצור גלגלים (פגוש עצירה) מול קיר קשיח בחניון",
+      "std": "הנחיות לתכנון חניה (משרד התחבורה) פרק ד' סעיף 4.1 וטבלה 4; תקנות התכנון והבניה (התקנת מקומות חניה), תשמ\"ג-1983; חוק המכר (דירות) סעיף 4",
+      "rec": "יש לספק ולהתקין מעצור גלגלים תקני ומעוגן לרצפה במרחק 75-80 ס\"מ מקיר החניון למניעת פגיעת הרכב בקיר.",
+      "note": "",
+      "inote": "אורך תא חניה ניצב מול קיר חייב להיות 5.00 מ' מלאים, כולל מרווח ביטחון של 25 ס\"מ. התקנת מעצור במרחק 75 ס\"מ מהקיר מונעת התנגשות חזית הרכב בקיר.",
+      "ut": "יח'",
+      "up": "350",
+      "uq": 1,
+      "std_image": "standards/std_parking_4_1.png",
+      "reporto_images": [
+        {
+          "id": "std_parking_4_1",
+          "url": "standards/std_parking_4_1.png",
+          "path": "standards/std_parking_4_1.png",
+          "fileName": "std_parking_4_1.png",
+          "title": "סעיף 4.1 הנחיות לתכנון חניה - מרווח ביטחון מקיר ומעצור גלגלים",
+          "mimeType": "image/png"
+        },
+        {
+          "id": "std_parking_table4",
+          "url": "standards/std_parking_table4.png",
+          "path": "standards/std_parking_table4.png",
+          "fileName": "std_parking_table4.png",
+          "title": "טבלה 4 הנחיות חניה - מידות חניה מול קיר ומול אבן שפה",
+          "mimeType": "image/png"
+        }
+      ]
     }
   ]
 };
