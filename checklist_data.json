@@ -119,8 +119,8 @@
   },
   {
     "id": "sec_storage",
-    "title": "5. מחסן (באור יום ☀️)",
-    "isDaylight": true,
+    "title": "5. מחסן (תאורה פנימית 💡)",
+    "isDaylight": false,
     "items": [
       {
         "id": "s1",
