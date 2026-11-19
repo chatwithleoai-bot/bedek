@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 938 - זיגוג בבניינים ובדיקת פגמים אופטיים</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">בדיקת פגמים ממרחק תקני והגנת זכוכית בטיחות</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Glass pane -->
+            <rect x="260" y="150" width="280" height="220" fill="#f0fdf4" stroke="#16a34a" stroke-width="3" rx="4"/>
+            <!-- Center mark -->
+            <circle cx="400" cy="260" r="6" fill="#16a34a"/>
+            <!-- Observer eye -->
+            <circle cx="400" cy="420" r="14" fill="#0284c7"/>
+            <circle cx="400" cy="420" r="6" fill="#ffffff"/>
+            <!-- Line of sight -->
+            <line x1="400" y1="400" x2="400" y2="270" stroke="#0284c7" stroke-width="2" stroke-dasharray="6"/>
+            
+            <text x="400" y="450" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle">עמדת הבודק: ניצב מול מרכז השמשה במרחק 1.5 - 2.0 מטר</text>
+            
+            <!-- Side notes -->
+            <path d="M 540 200 L 650 200" fill="none" stroke="#334155" stroke-width="2"/>
+            <text x="660" y="204" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#334155" text-anchor="start">זכוכית בטיחות מחוסמת/רבודה מתחת לגובה 105 ס"מ</text>
+            <path d="M 540 320 L 650 320" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <text x="660" y="324" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#dc2626" text-anchor="start">אסור מגע ישיר בין השמשה למסגרת האלומיניום</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

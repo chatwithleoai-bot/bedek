@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 1556 - גגות קלים ורעפים</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">שיפוע גג תקני, עיגון רעפי רוכב ואוורור חלל הגג</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Roof pitch triangle -->
+            <polygon points="180,340 400,180 620,340" fill="#fef2f2" stroke="#b91c1c" stroke-width="4"/>
+            
+            <!-- Ridge tile -->
+            <ellipse cx="400" cy="180" rx="25" ry="12" fill="#991b1b"/>
+            
+            <!-- Ventilation opening -->
+            <rect x="385" y="240" width="30" height="30" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+            
+            <!-- Pitch dimension -->
+            <path d="M 260 340 A 60 60 0 0 1 290 310" fill="none" stroke="#2563eb" stroke-width="2"/>
+            <text x="310" y="335" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563eb">שיפוע מינימלי 35%-40%</text>
+            
+            <!-- Callout -->
+            <path d="M 400 168 L 400 130 L 520 130" fill="none" stroke="#991b1b" stroke-width="2"/>
+            <text x="530" y="134" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#991b1b" text-anchor="start">עיגון מכני לכל רעפי הרוכב והשוליים</text>
+            
+            <text x="400" y="420" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#334155" text-anchor="middle">איטום רוכבים ברוכסה ייעודית נושמת למניעת חדירת מי גשם ורוח</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

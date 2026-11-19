@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 2206 והוראות כבאות - עמדת כיבוי אש וגלגילון</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">מידות ארון, גובה התקנה וסימון תקני</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Cabinet box -->
+            <rect x="300" y="150" width="200" height="220" fill="#fef2f2" stroke="#dc2626" stroke-width="4" rx="6"/>
+            <!-- Reel circle -->
+            <circle cx="400" cy="240" r="55" fill="#ffffff" stroke="#dc2626" stroke-width="4"/>
+            <circle cx="400" cy="240" r="20" fill="#dc2626"/>
+            <line x1="400" y1="240" x2="450" y2="290" stroke="#dc2626" stroke-width="6"/>
+            
+            <!-- Floor line -->
+            <line x1="150" y1="430" x2="650" y2="430" stroke="#475569" stroke-width="4"/>
+            <text x="660" y="435" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#475569" text-anchor="start">פני ריצוף מוגמר</text>
+            
+            <!-- Height line -->
+            <line x1="260" y1="430" x2="260" y2="240" stroke="#2563eb" stroke-width="2"/>
+            <text x="245" y="340" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#2563eb" text-anchor="end">גובה מרכז גלגילון: 1.20 - 1.50 מטר</text>
+            
+            <!-- Callout -->
+            <path d="M 500 180 L 620 180" fill="none" stroke="#334155" stroke-width="2"/>
+            <text x="630" y="184" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#334155" text-anchor="start">שילוט זוהר ונעילה מהירה עם זכוכית שבירה</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

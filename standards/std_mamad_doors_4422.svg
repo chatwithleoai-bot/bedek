@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 4422 ומפרטי פקע"ר - דלתות הדף וגזים בממ"ד</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">נעילת בריחים הרמטית, אטם EPDM רציף ואיסור חדירת אור</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Heavy steel frame -->
+            <rect x="240" y="140" width="320" height="260" fill="#e2e8f0" stroke="#1e293b" stroke-width="6" rx="4"/>
+            <!-- Door leaf -->
+            <rect x="260" y="155" width="280" height="230" fill="#cbd5e1" stroke="#334155" stroke-width="3"/>
+            
+            <!-- Bolts -->
+            <rect x="525" y="200" width="20" height="12" fill="#dc2626"/>
+            <rect x="525" y="260" width="20" height="12" fill="#dc2626"/>
+            <rect x="525" y="320" width="20" height="12" fill="#dc2626"/>
+            
+            <!-- Seal line -->
+            <rect x="255" y="150" width="290" height="240" fill="none" stroke="#0284c7" stroke-width="3" stroke-dasharray="5"/>
+            
+            <!-- Callouts -->
+            <path d="M 545 266 L 640 266" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <text x="650" y="270" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="start">בריחי נעילה נכנסים במלואם ללא התנגדות</text>
+            
+            <path d="M 255 190 L 150 190" fill="none" stroke="#0284c7" stroke-width="2"/>
+            <text x="140" y="194" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="end">אטם גומי EPDM שלם, רציף ואלסטי במסילתו</text>
+            
+            <text x="400" y="430" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#334155" text-anchor="middle">בדיקת אטימות: חל איסור מוחלט על מעבר פס אור בעת נעילת הבריחים</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 1068 ות"י 4068 - חלונות אלומיניום ופתחי ניקוז במסילה</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">דרישות ניקוז מסילה, אטמי EPDM ומברשות איטום</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Frame Profile -->
+            <rect x="220" y="140" width="360" height="240" fill="#f1f5f9" stroke="#334155" stroke-width="4" rx="4"/>
+            <rect x="240" y="160" width="155" height="200" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+            <rect x="405" y="160" width="155" height="200" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+            
+            <!-- Bottom rail & weep holes -->
+            <rect x="220" y="350" width="360" height="30" fill="#cbd5e1" stroke="#334155" stroke-width="3"/>
+            <!-- Weep hole 1 -->
+            <rect x="270" y="360" width="35" height="10" rx="3" fill="#0284c7"/>
+            <!-- Weep hole 2 -->
+            <rect x="490" y="360" width="35" height="10" rx="3" fill="#0284c7"/>
+            
+            <!-- Dimension / callouts -->
+            <path d="M 287 375 L 287 415 L 200 415" fill="none" stroke="#0284c7" stroke-width="2"/>
+            <text x="190" y="419" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="end">פתחי ניקוז מים (מרווח מירבי 600 מ"מ וכיסוי מגן)</text>
+            
+            <path d="M 405 200 L 640 200" fill="none" stroke="#2563eb" stroke-width="2"/>
+            <text x="650" y="204" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#2563eb" text-anchor="start">מברשות איטום ואטמי גומי מקוריים EPDM</text>
+            
+            <path d="M 500 280 L 640 280" fill="none" stroke="#16a34a" stroke-width="2"/>
+            <text x="650" y="284" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#16a34a" text-anchor="start">תנועה חלקה במסילה ללא חיכוך או שיירי טיח</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקנות התכנון והבנייה - מהלכי מדרגות פנים וחוץ</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">נוסחת המדרגות: 2 רום + שלח = 61-63 ס"מ, רום מקסימלי 17.5 ס"מ</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Stairs profile -->
+            <path d="M 200 370 L 300 370 L 300 300 L 400 300 L 400 230 L 500 230 L 500 160 L 600 160" fill="none" stroke="#1e293b" stroke-width="4"/>
+            
+            <!-- Tread (Shalach) dimension -->
+            <line x1="300" y1="285" x2="400" y2="285" stroke="#2563eb" stroke-width="2"/>
+            <text x="350" y="275" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="13" font-weight="bold" fill="#2563eb" text-anchor="middle">שלח (ש) לפחות 26 ס"מ</text>
+            
+            <!-- Riser (Rom) dimension -->
+            <line x1="415" y1="300" x2="415" y2="230" stroke="#dc2626" stroke-width="2"/>
+            <text x="430" y="270" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="start">רום (ר) עד 17.5 ס"מ</text>
+            
+            <text x="400" y="410" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="15" font-weight="bold" fill="#16a34a" text-anchor="middle">כלל הנוחות והבטיחות: 2 ר + ש = 61 עד 63 ס"מ</text>
+            <text x="400" y="435" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">אחידות מוחלטת בכל מדרגות המהלך (סטייה מירבית מותרת עד 5 מ"מ)</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

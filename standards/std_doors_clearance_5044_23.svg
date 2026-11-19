@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 23 חלק 2 ות"י 5044 - דלתות עץ בחדרים רטובים</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">מרווח תחתית משקוף 3-5 מ"מ ואיטום מסטיק פוליאוריטני למניעת ריקבון</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Tiled floor -->
+            <rect x="180" y="380" width="440" height="25" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+            <line x1="180" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="4"/>
+            <text x="630" y="395" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#334155" text-anchor="start">ריצוף חדר רחצה</text>
+            
+            <!-- Door Frame Jamb -->
+            <rect x="250" y="140" width="70" height="235" fill="#fef3c7" stroke="#b45309" stroke-width="3"/>
+            <!-- Architrave -->
+            <rect x="230" y="140" width="20" height="235" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+            
+            <!-- Sealant bead in gap -->
+            <rect x="230" y="375" width="90" height="5" fill="#0284c7"/>
+            
+            <!-- Dimension callout -->
+            <line x1="335" y1="375" x2="335" y2="380" stroke="#dc2626" stroke-width="2"/>
+            <path d="M 335 378 L 480 378 L 480 320 L 520 320" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <text x="530" y="324" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="start">מרווח 3-5 מ"מ אטום במסטיק גמיש</text>
+            
+            <text x="400" y="440" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#16a34a" text-anchor="middle">מונע ספיגה נימית של מים והתנפחות עץ בתחתית המשקוף וההלבשה</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>

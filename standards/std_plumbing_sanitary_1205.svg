@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="15" y="15" width="770" height="470" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- Header Bar -->
+  <rect x="25" y="25" width="750" height="75" fill="#1e293b" rx="6" filter="url(#shadow)"/>
+  <text x="400" y="58" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">תקן ישראלי ת"י 1205 והל"ת - מרחבי שימוש וקבועות שרברבות</text>
+  <text x="400" y="84" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#93c5fd" text-anchor="middle">מרחק מינימלי 40 ס"מ ממרכז אסלה לקיר ומרווח חופשי 80 ס"מ בחזית</text>
+  
+  <!-- Diagram Content -->
+  
+            <!-- Wall -->
+            <rect x="200" y="150" width="30" height="230" fill="#94a3b8"/>
+            <!-- Floor -->
+            <line x1="180" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="4"/>
+            
+            <!-- Toilet outline -->
+            <rect x="280" y="220" width="70" height="160" fill="#f8fafc" stroke="#0284c7" stroke-width="3" rx="8"/>
+            <ellipse cx="315" cy="300" rx="25" ry="35" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+            
+            <!-- Centerline of toilet -->
+            <line x1="315" y1="180" x2="315" y2="390" stroke="#dc2626" stroke-width="2" stroke-dasharray="4"/>
+            
+            <!-- Distance to wall (40cm min) -->
+            <line x1="230" y1="200" x2="315" y2="200" stroke="#dc2626" stroke-width="2"/>
+            <text x="272" y="190" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">לפחות 40 ס"מ</text>
+            
+            <!-- Front clearance (80cm min) -->
+            <line x1="350" y1="300" x2="520" y2="300" stroke="#16a34a" stroke-width="2"/>
+            <text x="435" y="290" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="13" font-weight="bold" fill="#16a34a" text-anchor="middle">מרחב חזיתי: לפחות 80 ס"מ</text>
+            
+            <text x="400" y="430" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="14" fill="#334155" text-anchor="middle">הוראות למיתקני תברואה (הל"ת): הבטחת גישה נוחה ושימוש תקני בקבועה</text>
+        
+  
+  <!-- Footer Brand / Standard stamp -->
+  <rect x="25" y="455" width="750" height="30" fill="#f1f5f9" rx="4"/>
+  <text x="35" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475569">צ. ביקורת מבנים | צוריאל צדוק - 053-9514613</text>
+  <text x="765" y="475" font-family="Noto Sans Hebrew, Arial, sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="end">תרשים תקן רשמי ומפרט טכני מחייב</text>
+</svg>
