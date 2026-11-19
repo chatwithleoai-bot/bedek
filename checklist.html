@@ -483,42 +483,34 @@
     }
 
     function copyCheckedSummary() {
-      let outputSections = [];
+      var NL = String.fromCharCode(10);
+      var outputSections = [];
       sections.forEach(function(section) {
-        let checkedInSec = [];
+        var checkedInSec = [];
         section.items.forEach(function(item) {
           if (checkedMap[item.id]) {
-            checkedInSec.push("✓ " + item.title);
+            checkedInSec.push('✓ ' + item.title);
           }
         });
         if (checkedInSec.length > 0) {
-          // מנקים אייקונים מהכותרת ללקוח
-          const cleanTitle = section.title.replace(/\(.*?\)/g, "").trim();
-          outputSections.push("*" + cleanTitle + ":*
-" + checkedInSec.join("
-"));
+          var cleanTitle = section.title.replace(/\(.*?\)/g, '').trim();
+          outputSections.push('*' + cleanTitle + ':*' + NL + checkedInSec.join(NL));
         }
       });
 
       if (outputSections.length === 0) {
-        showToast("טרם סומנו סעיפים שנבדקו");
+        showToast('טרם סומנו סעיפים שנבדקו');
         return;
       }
 
-      const headerText = "*פירוט הבדיקות המקצועיות שנערכו בנכס על ידי צ. ביקורת מבנים:*
-
-";
-      const footerText = "
-
-*כלל הממצאים והמדידות המלאות מתועדים בדוח הבדיקה המפורט.*";
-      const fullMessage = headerText + outputSections.join("
-
-") + footerText;
+      var headerText = '*פירוט הבדיקות המקצועיות שנערכו בנכס על ידי צ. ביקורת מבנים:*' + NL + NL;
+      var footerText = NL + NL + '*כלל הממצאים והמדידות המלאות מתועדים בדוח הבדיקה המפורט.*';
+      var fullMessage = headerText + outputSections.join(NL + NL) + footerText;
 
       navigator.clipboard.writeText(fullMessage).then(function() {
-        showToast("הודעת הסיכום הועתקה ללוח!");
+        showToast('הודעת הסיכום הועתקה ללוח!');
       }).catch(function() {
-        showToast("נכשל בהעתקה");
+        showToast('נכשל בהעתקה');
       });
     }
 
