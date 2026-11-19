@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>צ'ק-ליסט בדיקת דירה | צ. ביקורת מבנים</title>
+  <title>צ'ק-ליסט בדיקה בשטח | צ. ביקורת מבנים</title>
   <style>
     :root {
       --primary: #1e3a8a;
@@ -14,7 +14,6 @@
       --text-muted: #64748b;
       --border: #e2e8f0;
       --success: #16a34a;
-      --danger: #dc2626;
     }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
@@ -44,11 +43,10 @@
       display: flex; gap: 6px;
       background: rgba(255,255,255,0.16);
       border-radius: 8px; padding: 6px 10px;
-      font-size: 0.8rem; justify-content: space-around;
+      font-size: 0.82rem; justify-content: space-around;
       font-weight: 700; margin-top: 6px;
     }
     .badge-v { color: #86efac; }
-    .badge-x { color: #fca5a5; }
     .badge-pending { color: #cbd5e1; }
     
     .filters-bar {
@@ -81,9 +79,9 @@
     .section-day { background: #fffbeb; color: #b45309; border-right: 4px solid #f59e0b; }
     .section-interior { background: #f8fafc; color: var(--primary); border-right: 4px solid var(--primary-light); }
     .section-actions { display: flex; align-items: center; gap: 4px; }
-    .btn-add-item {
+    .btn-header-act {
       background: white; border: 1px solid var(--border);
-      border-radius: 6px; padding: 3px 8px; font-size: 0.74rem;
+      border-radius: 6px; padding: 4px 8px; font-size: 0.74rem;
       font-weight: 700; cursor: pointer; color: var(--text);
     }
     .badge-toggle {
@@ -94,37 +92,36 @@
     .badge-day-on { background: #fef08a; color: #854d0e; border: 1px solid #facc15; }
     .badge-day-off { background: #e2e8f0; color: #475569; border: 1px solid #cbd5e1; }
     
-    .item-row { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    .item-row {
+      padding: 12px 14px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; cursor: pointer;
+      transition: background 0.15s ease;
+    }
     .item-row:last-child { border-bottom: none; }
-    .item-row.state-pass { background: #f0fdf4; }
-    .item-row.state-fail { background: #fef2f2; }
+    .item-row.state-checked { background: #f0fdf4; }
     
-    .item-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
-    .item-title { font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.35; flex: 1; }
-    .item-menu-btn { background: none; border: none; color: var(--text-muted); font-size: 0.95rem; cursor: pointer; padding: 2px 4px; }
-    .item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 10px; }
-    
-    .action-group { display: flex; gap: 8px; }
-    .btn-action {
-      flex: 1; height: 42px; border-radius: 8px;
-      border: 1.5px solid var(--border); background: #ffffff;
-      font-size: 0.95rem; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      gap: 6px; cursor: pointer;
+    .check-circle {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid #cbd5e1; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; color: transparent;
+      flex-shrink: 0; transition: all 0.15s ease;
+      background: #ffffff;
     }
-    .btn-action:active { transform: scale(0.97); }
-    .btn-pass { color: #15803d; }
-    .btn-pass.active { background: var(--success); color: white; border-color: var(--success); }
-    .btn-fail { color: #b91c1c; }
-    .btn-fail.active { background: var(--danger); color: white; border-color: var(--danger); }
-    
-    .note-input {
-      width: 100%; margin-top: 8px; padding: 8px;
-      border-radius: 6px; border: 1px solid var(--border);
-      font-size: 0.82rem; background: #ffffff;
-      display: none; font-family: inherit;
+    .state-checked .check-circle {
+      border-color: var(--success);
+      background: var(--success);
+      color: white;
     }
-    .state-fail .note-input, .has-note .note-input { display: block; }
+    
+    .item-details { flex: 1; }
+    .item-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+    .item-title { font-size: 0.95rem; font-weight: 700; color: var(--text); line-height: 1.35; }
+    .item-menu-btn {
+      background: none; border: none; color: var(--text-muted);
+      font-size: 0.95rem; cursor: pointer; padding: 2px 6px;
+    }
+    .item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin-top: 3px; }
     
     .btn-add-section {
       background: #ffffff; border: 1.5px dashed var(--primary-light);
@@ -145,7 +142,7 @@
       display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .btn-share { background: #25D366; color: white; }
-    .btn-reset { background: #f1f5f9; color: #475569; border: 1px solid var(--border); flex: 0.45; }
+    .btn-reset { background: #f1f5f9; color: #475569; border: 1px solid var(--border); flex: 0.35; }
     
     .toast {
       position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%);
@@ -161,19 +158,18 @@
   <header>
     <div class="header-top">
       <div>
-        <h1 class="header-title">צ'ק-ליסט בדיקת דירה</h1>
+        <h1 class="header-title">מעקב בדיקת דירה בשטח</h1>
         <div class="header-sub">צ. ביקורת מבנים | שמירה מקומית אוטומטית</div>
       </div>
       <div id="save-indicator" style="font-size: 0.72rem; opacity: 0.9;">נשמר ✓</div>
     </div>
     <div class="day-alert">
-      ☀️ בדיקות אור יום (16:00 עד 17:30) - ניתן להחליף תיוג בלחיצה
+      ☀️ בדיקות אור יום (16:00 עד 17:30) - ניתן לשנות תיוג לכל חלל
     </div>
     <div class="status-bar">
-      <div class="badge-v">תקין: <span id="count-v">0</span></div>
-      <div class="badge-x">ליקוי: <span id="count-x">0</span></div>
-      <div class="badge-pending">נותר: <span id="count-pending">0</span></div>
-      <div>סה"כ: <span id="count-total">0</span></div>
+      <div class="badge-v">נבדקו: <span id="count-checked">0</span></div>
+      <div class="badge-pending">נותרו: <span id="count-pending">0</span></div>
+      <div>סה"כ סעיפים: <span id="count-total">0</span></div>
     </div>
   </header>
 
@@ -181,8 +177,8 @@
     <button class="filter-btn active" onclick="setFilter('all', this)">הכל</button>
     <button class="filter-btn filter-day" onclick="setFilter('day', this)">☀️ רק אור יום (16:00-17:30)</button>
     <button class="filter-btn" onclick="setFilter('interior', this)">💡 בדיקות פנים ומכשור</button>
-    <button class="filter-btn" onclick="setFilter('fail', this)">✗ רק ליקויים</button>
-    <button class="filter-btn" onclick="setFilter('pending', this)">טרם נבדק</button>
+    <button class="filter-btn" onclick="setFilter('checked', this)">✓ מה שנבדק</button>
+    <button class="filter-btn" onclick="setFilter('pending', this)">מה שטרם נבדק</button>
   </div>
 
   <div class="content">
@@ -191,385 +187,352 @@
   </div>
 
   <div class="bottom-bar">
-    <button class="bottom-btn btn-share" onclick="copyFailuresSummary()">📋 העתק ליקויים לוואטסאפ</button>
+    <button class="bottom-btn btn-share" onclick="copyCheckedSummary()">📋 העתק ללקוח מה שנבדק</button>
     <button class="bottom-btn btn-reset" onclick="resetAll()">איפוס</button>
   </div>
 
   <div class="toast" id="toast">הועתק ללוח!</div>
 
   <script>
+    const INITIAL_DATA = [{"id": "sec_balcony", "title": "1. מרפסת שמש (חובה באור יום ☀️)", "isDaylight": true, "items": [{"id": "b1", "title": "שיפועי ניקוז והיקוות מים", "desc": "שיפוע 1.0% לפחות לכיוון נקז החרדון, בדיקת זרימת מים ומניעת שלוליות."}, {"id": "b2", "title": "סף יציאה והפרש גבהים", "desc": "סף מוגבה של 2.5–5 ס״מ בין ריצוף פנים לריצוף חוץ למניעת חדירת גשם."}, {"id": "b3", "title": "מעקה בטיחות ומאחזי יד", "desc": "גובה תקני 105 ס״מ עד גובה 1 מטר ו-110 ס״מ מעל, מרווח שלבים עד 10 ס״מ (ת״י 1142), עיגון יציב."}, {"id": "b4", "title": "נקז כפול ואיטום רולקות", "desc": "קיום נקז כפול (עליון ותחתון), פתיחת רשת נקז לסילוק פסולת, רולקות איטום בהיקף."}, {"id": "b5", "title": "ברז גן ושקע מוגן מים", "desc": "ברז גן עם שסתום אל-חוזר, שקע חשמל מוגן מים IP44 עם מכסה אטום."}]}, {"id": "sec_windows", "title": "2. חלונות, ויטרינות ואלומיניום חוץ (באור יום ☀️)", "isDaylight": true, "items": [{"id": "w1", "title": "איטום ספי חלונות ומסטיק היקפי", "desc": "איטום מפגש שיש-אלומיניום-טיח חיצוני למניעת חדירת גשמים ורוחות."}, {"id": "w2", "title": "זיגוג בטיחות ושריטות", "desc": "בדיקת שריטות, עכירות ובועות באור טבעי, סימון תקן זכוכית בטיחות (ת״י 938)."}, {"id": "w3", "title": "חריצי ניקוז במסילות", "desc": "חריצי ניקוז פתוחים ונקיים במסילות תחתונות למניעת הצפה פנימית בגשם."}, {"id": "w4", "title": "כנפיים, גומיות וגובלים", "desc": "אטימת גומיות EPDM, מברשות, נעילה חלקה, גובלי פתיחה למניעת נפילה."}]}, {"id": "sec_laundry_hide", "title": "3. מסתור כביסה (באור יום ☀️)", "isDaylight": true, "items": [{"id": "lh1", "title": "רפפות אלומיניום ומעקה", "desc": "שלמות רפפות אלומיניום, חיזוק יציב, סף בטיחות לפחות 105 ס״מ (ת״י 1509)."}, {"id": "lh2", "title": "רצפה ושיפועי ניקוז", "desc": "שיפוע ניקוז מובהק, היעדר שלוליות תחת מעמדי מנועי המזגן."}, {"id": "lh3", "title": "איטום מעברי צנרת מזגנים", "desc": "איטום חדירות צנרת מיזוג וחשמל בקיר חיצוני למניעת חדירת מים וציפורים."}, {"id": "lh4", "title": "צנרת ניקוז מזגנים קשיחה", "desc": "חיבור קשיח לקו ניקוז מאסף ללא שפיכה חופשית על קירות או שכנים."}]}, {"id": "sec_parking", "title": "4. חנייה ופיתוח סביבתי (באור יום ☀️)", "isDaylight": true, "items": [{"id": "p1", "title": "שיפועי ניקוז ומים", "desc": "שיפוע לכיוון תעלות ניקוז (סף מזערי 1.0%), בדיקת היקוות מים עומדים ושלוליות."}, {"id": "p2", "title": "מידות תא החניה", "desc": "רוחב נטו (2.55 מ' עד 2.70 מ' בצמוד לקיר), אורך 5.00 מ', מרווח מעמודים."}, {"id": "p3", "title": "מחסום גלגלים (פגוש עצירה)", "desc": "קיום מעצור גלגלים מול קיר קשיח, עיגון יציב ברצפה, מרחק מונע פגיעת פגוש."}, {"id": "p4", "title": "גובה פנוי מתחת למערכות", "desc": "מדידת גובה נטו מתחת לתעלות וצנרת בתקרה (לפחות 2.20 מ')."}, {"id": "p5", "title": "סימון, תמרור וציפוי רצפה", "desc": "סימון קווים, שילוט מספר חניה, גלאים/מתזים, שלמות בטון או ציפוי אפוקסי."}]}, {"id": "sec_storage", "title": "5. מחסן (תאורה פנימית 💡)", "isDaylight": false, "items": [{"id": "s1", "title": "אוורור ורשת נגד מזיקים", "desc": "קיום פתח אוורור תקני עם רשת מתאימה למניעת לחות, ריחות ועובש."}, {"id": "s2", "title": "רטיבות קפילרית ואיטום", "desc": "בדיקת לחות בתחתית הקירות, עובש, מליחות וריחות טחב."}, {"id": "s3", "title": "דלת המחסן ומשקוף", "desc": "פתיחה ונעילה חלקה, מרווח תחתון תקין 3–5 מ״מ, שלמות משקוף וכנף."}, {"id": "s4", "title": "ריצוף וצביעה", "desc": "מישוריות ריצוף, היעדר חלילות, אחידות צבע וטיח ללא קילופים."}]}, {"id": "sec_plumbing_main", "title": "6. אינסטלציה, לחץ מים וביוב (מכשור מתקדם 💡)", "isDaylight": false, "items": [{"id": "pl1", "title": "בדיקת לחץ הידראולי במנומטר", "desc": "בדיקת שעון לחץ דיפרנציאלי לצנרת חמים וקרים לאיתור נפילות לחץ ונזילות סמויות."}, {"id": "pl2", "title": "צילום שוחות וקווי ביוב בסיב אופטי", "desc": "סריקת 50 מ' סיב אופטי לשוחות שפכים: שיפועים הפוכים, סתימות בטון וכשלים."}, {"id": "pl3", "title": "צנרות ומקומות נסתרים באנדוסקופ", "desc": "סריקת מצלמת נחש גמישה בנקודות נסתרות ותעלות דקות לאיתור חדירות מים."}, {"id": "pl4", "title": "קופסאות ביקורת ומחסומי רצפה", "desc": "הזרמת מים ממושכת ובדיקת הצפה חוזרת במחסום רצפה וסילוק פסולת בניין."}]}, {"id": "sec_thermo_moisture", "title": "7. תרמוגרפיה ולחות במצע הריצוף (מכשור 💡)", "isDaylight": false, "items": [{"id": "tm1", "title": "סריקה תרמית במצלמה מקצועית", "desc": "איתור גשרי קור, חדירות נוזלים, כשלים סמויים באיטום ודליפות חמות/קרות."}, {"id": "tm2", "title": "מד לחות עמוק במצע (שומשום/חול)", "desc": "מדידת אחוז הלחות הכלואה במצע הריצוף למניעת קורוזיה לבטון והרס משקופים."}]}, {"id": "sec_electrical", "title": "8. לוח חשמל, בדיקת פחת והארקה (מכשור 💡)", "isDaylight": false, "items": [{"id": "el1", "title": "עכבת לולאת תקלה (Loop Tester)", "desc": "בדיקת טיב הארקה, זמני תגובת ממסרי פחת והגנה מלאה מהתחשמלות ושריפה."}, {"id": "el2", "title": "רציפות הארקה וסדר פאזות בשקעים", "desc": "בדיקת קיום והידוק הארקה בכל שקע בדירה, בדיקת קוטביות וסדר פאזות."}, {"id": "el3", "title": "לוח חשמל ראשי וסימונים", "desc": "סימון מעגלים ברור, שלמות מכסים, הידוק מהדקים והיעדר חוטים גלויים."}]}, {"id": "sec_flooring", "title": "9. ריצוף וחיפויי פנים - שן-שן וחלילות (💡)", "isDaylight": false, "items": [{"id": "fl1", "title": "הפרשי גובה ושן-שן במד עלים", "desc": "בדיקת סטיות במד עלים וסרגל 2 מטר, מניעת שן מעל 1 מ״מ ומכשולי דריכה (ת״י 789)."}, {"id": "fl2", "title": "חלילות תחת הריצוף (בלטה-בלטה)", "desc": "הקשה בפטיש אקוסטי מותאם לסריקת הידבקות האריחים למצע ומניעת שבירה (ת״י 1555)."}, {"id": "fl3", "title": "מישוריות, פלס וגוון רובה", "desc": "בדיקת פלס על גבי הריצוף, אחידות רובה ללא חורים או סדקים, שלמות פנלים."}]}, {"id": "sec_mamad", "title": "10. מרחב מוגן דירתי (ממ״ד תקני 💡)", "isDaylight": false, "items": [{"id": "mm1", "title": "דלת הדף ואטימות גזים", "desc": "סגירה ונעילה הרמטית של כנף הדף ודלת רסיסים, אטמי גומי שלמים, מרווח תחתון."}, {"id": "mm2", "title": "חלון הדף וחלון גזים", "desc": "נעילה כפולה של לוח פלדה, אטימות חלון אלומיניום נגרר/פנימי, תקינות ידיות."}, {"id": "mm3", "title": "שסתומי הדף וצינורות אוורור", "desc": "קיום צינורות אוורור תקניים בקוטר 4 או 8 צול, שסתומי הדף שלמים ומכסים אטומים."}, {"id": "mm4", "title": "טיח פקע״ר ושקעי חשמל", "desc": "טיח בגר תקני מאושר פיקוד העורף ללא התנפחויות, שקעי חשמל ותקשורת אטומים."}]}, {"id": "sec_kitchen", "title": "11. מטבח (💡)", "isDaylight": false, "items": [{"id": "k1", "title": "ארונות ונגרות מטבח", "desc": "יישור חזיתות, טריקה שקטה, שלמות ציפויים, מרווחי מגירות, סוקל אטום למים."}, {"id": "k2", "title": "משטח עבודה שיש", "desc": "מישוריות, פילוס, שלמות לוחות, איטום סיליקון אנטי-בקטריאלי מול החיפוי."}, {"id": "k3", "title": "כיור, ברז ואינסטלציה", "desc": "התקנת כיור תקינה, סיפון קשיח תקני (ללא סיפון שרשורי), בדיקת לחץ ונזילות."}, {"id": "k4", "title": "שקעי כוח ייעודיים", "desc": "מרחק בטוח ממקור מים, קווי כוח נפרדים לתנור, מדיח ומקרר."}, {"id": "k5", "title": "פתח קולט ואוורור", "desc": "הכנה תקנית או פתח יציאה החוצה לקולט אדים, בדיקת חלון מטבח."}]}, {"id": "sec_bathrooms", "title": "12. מקלחת ושירותים - הורים ומרכזי (💡)", "isDaylight": false, "items": [{"id": "bt1", "title": "שיפועי מקלחון ורצפה", "desc": "שיפוע 1.0%–1.5% לקולטן, אטימות סף מקלחון ומניעת גלישת מים לחדר."}, {"id": "bt2", "title": "אסלה ומכל הדחה סמוי", "desc": "מרחב שימוש 80 ס״מ לפחות (ת״הל), קיבוע יציב, הדחה כפולה, היעדר נזילה סמויה."}, {"id": "bt3", "title": "ארון כיור וברז", "desc": "קיבוע ארון מרחף, איטום מפגש כיור לקיר, סיפון קשיח, זרימת מים חמים/קרים."}, {"id": "bt4", "title": "חיפוי קירות עד תקרה", "desc": "מישוריות, שלמות רובה, היעדר חלילות בהקשה (ת״י 1555)."}, {"id": "bt5", "title": "בטיחות חשמל ואוורור", "desc": "מרחקי בטיחות של שקעים ומפסקים (IPX4), ונטה תקנית עם מפסק/השהיה."}]}, {"id": "sec_guest_toilet", "title": "13. שירותי אורחים (💡)", "isDaylight": false, "items": [{"id": "gt1", "title": "אסלה ואינסטלציה", "desc": "קיבוע יציב, מנגנון הדחה תקין, אטימות שסתום מילוי."}, {"id": "gt2", "title": "כיור ונטילת ידיים", "desc": "מרחב גישה, ברז יציב, סיפון קשיח וניקוז חופשי."}, {"id": "gt3", "title": "דלת ומנעול חירום", "desc": "מנעול תפוס/פנוי עם אפשרות שחרור חירום מבחוץ, מרווח תחתון תקני."}]}, {"id": "sec_utility", "title": "14. חדר שירות וכביסה (💡)", "isDaylight": false, "items": [{"id": "u1", "title": "הזנת מים ונקז דלוחין למכונה", "desc": "ברז מים קרים ייעודי, נקז דלוחין בגובה 60 ס״מ לפחות מעל הרצפה."}, {"id": "u2", "title": "נקז רצפה ושיפועים", "desc": "קולטן רצפתי לחירום עם שיפוע מקומי לניקוז שטיפה או הצפה."}, {"id": "u3", "title": "שקעי כוח ייעודיים", "desc": "שקעים נפרדים למכונת כביסה ומייבש, הארקה תקינה וגובה תקני."}]}, {"id": "sec_rooms", "title": "15. סלון וחדרי שינה (💡)", "isDaylight": false, "items": [{"id": "rm1", "title": "דלתות פנים ומשקופים", "desc": "פילוס משקופים, פתיחה ונעילה חלקה, מרווח תחתון 3–5 מ״מ, עמידות במים (סטופר)."}, {"id": "rm2", "title": "קירות, טיח וצבע", "desc": "בדיקת סרגל למישוריות, סדקים נימיים, גליות צבע ואחידות גימור."}, {"id": "rm3", "title": "חשמל, מפסקים ותקשורת", "desc": "שקעים ומפסקים ישרים ומקובעים, הדלקה מחלפת בחדר הורים, נקודות רשת וטלוויזיה."}, {"id": "rm4", "title": "מיזוג אוויר", "desc": "התקנת תריסי אוויר (סלוטים) ישרה, שלמות פתחי שירות ומפוחים."}]}, {"id": "sec_lobby", "title": "16. לובי בקומה ומבואה (💡)", "isDaylight": false, "items": [{"id": "lb1", "title": "דלתות אש ומעברים", "desc": "מנגנון מחזיר שמן לסגירה עצמית, אטמים תופחים, ידית בהלה ונעילה תקנית."}, {"id": "lb2", "title": "ארונות שירות ואיטום מעברים", "desc": "סגירה ונעילה, שילוט תקני, איטום מעברי צנרת בין קומות למניעת עשן ואש."}, {"id": "lb3", "title": "עמדת כיבוי אש ומתזים", "desc": "גלגילון, מטף, לחצן אזעקה, מתזים ושלמות ארון כיבוי (ת״י 2206)."}, {"id": "lb4", "title": "תאורת חירום ושילוט פליטה", "desc": "פעולת גופי תאורת חירום ושלטי יציאה מוארים."}]}];
 
-const INITIAL_DATA = [{"id": "sec_balcony", "title": "1. מרפסת שמש (חובה באור יום ☀️)", "isDaylight": true, "items": [{"id": "b1", "title": "שיפועי ניקוז והיקוות מים", "desc": "שיפוע 1.0% לפחות לכיוון נקז החרדון, בדיקת זרימת מים ומניעת שלוליות."}, {"id": "b2", "title": "סף יציאה והפרש גבהים", "desc": "סף מוגבה של 2.5–5 ס״מ בין ריצוף פנים לריצוף חוץ למניעת חדירת גשם."}, {"id": "b3", "title": "מעקה בטיחות ומאחזי יד", "desc": "גובה תקני 105 ס״מ עד גובה 1 מטר ו-110 ס״מ מעל, מרווח שלבים עד 10 ס״מ (ת״י 1142), עיגון יציב."}, {"id": "b4", "title": "נקז כפול ואיטום רולקות", "desc": "קיום נקז כפול (עליון ותחתון), פתיחת רשת נקז לסילוק פסולת, רולקות איטום בהיקף."}, {"id": "b5", "title": "ברז גן ושקע מוגן מים", "desc": "ברז גן עם שסתום אל-חוזר, שקע חשמל מוגן מים IP44 עם מכסה אטום."}]}, {"id": "sec_windows", "title": "2. חלונות, ויטרינות ואלומיניום חוץ (באור יום ☀️)", "isDaylight": true, "items": [{"id": "w1", "title": "איטום ספי חלונות ומסטיק היקפי", "desc": "איטום מפגש שיש-אלומיניום-טיח חיצוני למניעת חדירת גשמים ורוחות."}, {"id": "w2", "title": "זיגוג בטיחות ושריטות", "desc": "בדיקת שריטות, עכירות ובועות באור טבעי, סימון תקן זכוכית בטיחות (ת״י 938)."}, {"id": "w3", "title": "חריצי ניקוז במסילות", "desc": "חריצי ניקוז פתוחים ונקיים במסילות תחתונות למניעת הצפה פנימית בגשם."}, {"id": "w4", "title": "כנפיים, גומיות וגובלים", "desc": "אטימת גומיות EPDM, מברשות, נעילה חלקה, גובלי פתיחה למניעת נפילה."}]}, {"id": "sec_laundry_hide", "title": "3. מסתור כביסה (באור יום ☀️)", "isDaylight": true, "items": [{"id": "lh1", "title": "רפפות אלומיניום ומעקה", "desc": "שלמות רפפות אלומיניום, חיזוק יציב, סף בטיחות לפחות 105 ס״מ (ת״י 1509)."}, {"id": "lh2", "title": "רצפה ושיפועי ניקוז", "desc": "שיפוע ניקוז מובהק, היעדר שלוליות תחת מעמדי מנועי המזגן."}, {"id": "lh3", "title": "איטום מעברי צנרת מזגנים", "desc": "איטום חדירות צנרת מיזוג וחשמל בקיר חיצוני למניעת חדירת מים וציפורים."}, {"id": "lh4", "title": "צנרת ניקוז מזגנים קשיחה", "desc": "חיבור קשיח לקו ניקוז מאסף ללא שפיכה חופשית על קירות או שכנים."}]}, {"id": "sec_parking", "title": "4. חנייה ופיתוח סביבתי (באור יום ☀️)", "isDaylight": true, "items": [{"id": "p1", "title": "שיפועי ניקוז ומים", "desc": "שיפוע לכיוון תעלות ניקוז (סף מזערי 1.0%), בדיקת היקוות מים עומדים ושלוליות."}, {"id": "p2", "title": "מידות תא החניה", "desc": "רוחב נטו (2.55 מ' עד 2.70 מ' בצמוד לקיר), אורך 5.00 מ', מרווח מעמודים."}, {"id": "p3", "title": "מחסום גלגלים (פגוש עצירה)", "desc": "קיום מעצור גלגלים מול קיר קשיח, עיגון יציב ברצפה, מרחק מונע פגיעת פגוש."}, {"id": "p4", "title": "גובה פנוי מתחת למערכות", "desc": "מדידת גובה נטו מתחת לתעלות וצנרת בתקרה (לפחות 2.20 מ')."}, {"id": "p5", "title": "סימון, תמרור וציפוי רצפה", "desc": "סימון קווים, שילוט מספר חניה, גלאים/מתזים, שלמות בטון או ציפוי אפוקסי."}]}, {"id": "sec_storage", "title": "5. מחסן (תאורה פנימית 💡)", "isDaylight": false, "items": [{"id": "s1", "title": "אוורור ורשת נגד מזיקים", "desc": "קיום פתח אוורור תקני עם רשת מתאימה למניעת לחות, ריחות ועובש."}, {"id": "s2", "title": "רטיבות קפילרית ואיטום", "desc": "בדיקת לחות בתחתית הקירות, עובש, מליחות וריחות טחב."}, {"id": "s3", "title": "דלת המחסן ומשקוף", "desc": "פתיחה ונעילה חלקה, מרווח תחתון תקין 3–5 מ״מ, שלמות משקוף וכנף."}, {"id": "s4", "title": "ריצוף וצביעה", "desc": "מישוריות ריצוף, היעדר חלילות, אחידות צבע וטיח ללא קילופים."}]}, {"id": "sec_plumbing_main", "title": "6. אינסטלציה, לחץ מים וביוב (מכשור מתקדם 💡)", "isDaylight": false, "items": [{"id": "pl1", "title": "בדיקת לחץ הידראולי במנומטר", "desc": "בדיקת שעון לחץ דיפרנציאלי לצנרת חמים וקרים לאיתור נפילות לחץ ונזילות סמויות."}, {"id": "pl2", "title": "צילום שוחות וקווי ביוב בסיב אופטי", "desc": "סריקת 50 מ' סיב אופטי לשוחות שפכים: שיפועים הפוכים, סתימות בטון וכשלים."}, {"id": "pl3", "title": "צנרות ומקומות נסתרים באנדוסקופ", "desc": "סריקת מצלמת נחש גמישה בנקודות נסתרות ותעלות דקות לאיתור חדירות מים."}, {"id": "pl4", "title": "קופסאות ביקורת ומחסומי רצפה", "desc": "הזרמת מים ממושכת ובדיקת הצפה חוזרת במחסום רצפה וסילוק פסולת בניין."}]}, {"id": "sec_thermo_moisture", "title": "7. תרמוגרפיה ולחות במצע הריצוף (מכשור 💡)", "isDaylight": false, "items": [{"id": "tm1", "title": "סריקה תרמית במצלמה מקצועית", "desc": "איתור גשרי קור, חדירות נוזלים, כשלים סמויים באיטום ודליפות חמות/קרות."}, {"id": "tm2", "title": "מד לחות עמוק במצע (שומשום/חול)", "desc": "מדידת אחוז הלחות הכלואה במצע הריצוף למניעת קורוזיה לבטון והרס משקופים."}]}, {"id": "sec_electrical", "title": "8. לוח חשמל, בדיקת פחת והארקה (מכשור 💡)", "isDaylight": false, "items": [{"id": "el1", "title": "עכבת לולאת תקלה (Loop Tester)", "desc": "בדיקת טיב הארקה, זמני תגובת ממסרי פחת והגנה מלאה מהתחשמלות ושריפה."}, {"id": "el2", "title": "רציפות הארקה וסדר פאזות בשקעים", "desc": "בדיקת קיום והידוק הארקה בכל שקע בדירה, בדיקת קוטביות וסדר פאזות."}, {"id": "el3", "title": "לוח חשמל ראשי וסימונים", "desc": "סימון מעגלים ברור, שלמות מכסים, הידוק מהדקים והיעדר חוטים גלויים."}]}, {"id": "sec_flooring", "title": "9. ריצוף וחיפויי פנים - שן-שן וחלילות (💡)", "isDaylight": false, "items": [{"id": "fl1", "title": "הפרשי גובה ושן-שן במד עלים", "desc": "בדיקת סטיות במד עלים וסרגל 2 מטר, מניעת שן מעל 1 מ״מ ומכשולי דריכה (ת״י 789)."}, {"id": "fl2", "title": "חלילות תחת הריצוף (בלטה-בלטה)", "desc": "הקשה בפטיש אקוסטי מותאם לסריקת הידבקות האריחים למצע ומניעת שבירה (ת״י 1555)."}, {"id": "fl3", "title": "מישוריות, פלס וגוון רובה", "desc": "בדיקת פלס על גבי הריצוף, אחידות רובה ללא חורים או סדקים, שלמות פנלים."}]}, {"id": "sec_mamad", "title": "10. מרחב מוגן דירתי (ממ״ד תקני 💡)", "isDaylight": false, "items": [{"id": "mm1", "title": "דלת הדף ואטימות גזים", "desc": "סגירה ונעילה הרמטית של כנף הדף ודלת רסיסים, אטמי גומי שלמים, מרווח תחתון."}, {"id": "mm2", "title": "חלון הדף וחלון גזים", "desc": "נעילה כפולה של לוח פלדה, אטימות חלון אלומיניום נגרר/פנימי, תקינות ידיות."}, {"id": "mm3", "title": "שסתומי הדף וצינורות אוורור", "desc": "קיום צינורות אוורור תקניים בקוטר 4 או 8 צול, שסתומי הדף שלמים ומכסים אטומים."}, {"id": "mm4", "title": "טיח פקע״ר ושקעי חשמל", "desc": "טיח בגר תקני מאושר פיקוד העורף ללא התנפחויות, שקעי חשמל ותקשורת אטומים."}]}, {"id": "sec_kitchen", "title": "11. מטבח (💡)", "isDaylight": false, "items": [{"id": "k1", "title": "ארונות ונגרות מטבח", "desc": "יישור חזיתות, טריקה שקטה, שלמות ציפויים, מרווחי מגירות, סוקל אטום למים."}, {"id": "k2", "title": "משטח עבודה שיש", "desc": "מישוריות, פילוס, שלמות לוחות, איטום סיליקון אנטי-בקטריאלי מול החיפוי."}, {"id": "k3", "title": "כיור, ברז ואינסטלציה", "desc": "התקנת כיור תקינה, סיפון קשיח תקני (ללא סיפון שרשורי), בדיקת לחץ ונזילות."}, {"id": "k4", "title": "שקעי כוח ייעודיים", "desc": "מרחק בטוח ממקור מים, קווי כוח נפרדים לתנור, מדיח ומקרר."}, {"id": "k5", "title": "פתח קולט ואוורור", "desc": "הכנה תקנית או פתח יציאה החוצה לקולט אדים, בדיקת חלון מטבח."}]}, {"id": "sec_bathrooms", "title": "12. מקלחת ושירותים - הורים ומרכזי (💡)", "isDaylight": false, "items": [{"id": "bt1", "title": "שיפועי מקלחון ורצפה", "desc": "שיפוע 1.0%–1.5% לקולטן, אטימות סף מקלחון ומניעת גלישת מים לחדר."}, {"id": "bt2", "title": "אסלה ומכל הדחה סמוי", "desc": "מרחב שימוש 80 ס״מ לפחות (ת״הל), קיבוע יציב, הדחה כפולה, היעדר נזילה סמויה."}, {"id": "bt3", "title": "ארון כיור וברז", "desc": "קיבוע ארון מרחף, איטום מפגש כיור לקיר, סיפון קשיח, זרימת מים חמים/קרים."}, {"id": "bt4", "title": "חיפוי קירות עד תקרה", "desc": "מישוריות, שלמות רובה, היעדר חלילות בהקשה (ת״י 1555)."}, {"id": "bt5", "title": "בטיחות חשמל ואוורור", "desc": "מרחקי בטיחות של שקעים ומפסקים (IPX4), ונטה תקנית עם מפסק/השהיה."}]}, {"id": "sec_guest_toilet", "title": "13. שירותי אורחים (💡)", "isDaylight": false, "items": [{"id": "gt1", "title": "אסלה ואינסטלציה", "desc": "קיבוע יציב, מנגנון הדחה תקין, אטימות שסתום מילוי."}, {"id": "gt2", "title": "כיור ונטילת ידיים", "desc": "מרחב גישה, ברז יציב, סיפון קשיח וניקוז חופשי."}, {"id": "gt3", "title": "דלת ומנעול חירום", "desc": "מנעול תפוס/פנוי עם אפשרות שחרור חירום מבחוץ, מרווח תחתון תקני."}]}, {"id": "sec_utility", "title": "14. חדר שירות וכביסה (💡)", "isDaylight": false, "items": [{"id": "u1", "title": "הזנת מים ונקז דלוחין למכונה", "desc": "ברז מים קרים ייעודי, נקז דלוחין בגובה 60 ס״מ לפחות מעל הרצפה."}, {"id": "u2", "title": "נקז רצפה ושיפועים", "desc": "קולטן רצפתי לחירום עם שיפוע מקומי לניקוז שטיפה או הצפה."}, {"id": "u3", "title": "שקעי כוח ייעודיים", "desc": "שקעים נפרדים למכונת כביסה ומייבש, הארקה תקינה וגובה תקני."}]}, {"id": "sec_rooms", "title": "15. סלון וחדרי שינה (💡)", "isDaylight": false, "items": [{"id": "rm1", "title": "דלתות פנים ומשקופים", "desc": "פילוס משקופים, פתיחה ונעילה חלקה, מרווח תחתון 3–5 מ״מ, עמידות במים (סטופר)."}, {"id": "rm2", "title": "קירות, טיח וצבע", "desc": "בדיקת סרגל למישוריות, סדקים נימיים, גליות צבע ואחידות גימור."}, {"id": "rm3", "title": "חשמל, מפסקים ותקשורת", "desc": "שקעים ומפסקים ישרים ומקובעים, הדלקה מחלפת בחדר הורים, נקודות רשת וטלוויזיה."}, {"id": "rm4", "title": "מיזוג אוויר", "desc": "התקנת תריסי אוויר (סלוטים) ישרה, שלמות פתחי שירות ומפוחים."}]}, {"id": "sec_lobby", "title": "16. לובי בקומה ומבואה (💡)", "isDaylight": false, "items": [{"id": "lb1", "title": "דלתות אש ומעברים", "desc": "מנגנון מחזיר שמן לסגירה עצמית, אטמים תופחים, ידית בהלה ונעילה תקנית."}, {"id": "lb2", "title": "ארונות שירות ואיטום מעברים", "desc": "סגירה ונעילה, שילוט תקני, איטום מעברי צנרת בין קומות למניעת עשן ואש."}, {"id": "lb3", "title": "עמדת כיבוי אש ומתזים", "desc": "גלגילון, מטף, לחצן אזעקה, מתזים ושלמות ארון כיבוי (ת״י 2206)."}, {"id": "lb4", "title": "תאורת חירום ושילוט פליטה", "desc": "פעולת גופי תאורת חירום ושלטי יציאה מוארים."}]}];
+    const STORAGE_KEY_SECTIONS = "bedek_sections_v5";
+    const STORAGE_KEY_CHECKED = "bedek_checked_v5";
 
-const STORAGE_KEY_SECTIONS = "bedek_custom_sections_v4";
-const STORAGE_KEY_STATUS = "bedek_checklist_status_v4";
+    let sections = [];
+    let checkedMap = {};
+    let currentFilter = "all";
 
-let sections = [];
-let state = {};
-let currentFilter = "all";
+    function initData() {
+      try {
+        const savedSec = localStorage.getItem(STORAGE_KEY_SECTIONS);
+        sections = savedSec ? JSON.parse(savedSec) : JSON.parse(JSON.stringify(INITIAL_DATA));
 
-function initData() {
-  try {
-    const savedSections = localStorage.getItem(STORAGE_KEY_SECTIONS);
-    if (savedSections) {
-      sections = JSON.parse(savedSections);
-    } else {
-      sections = JSON.parse(JSON.stringify(INITIAL_DATA));
-    }
-
-    const savedStatus = localStorage.getItem(STORAGE_KEY_STATUS);
-    if (savedStatus) {
-      state = JSON.parse(savedStatus);
-    }
-  } catch (e) {
-    console.error("Init data error", e);
-    sections = JSON.parse(JSON.stringify(INITIAL_DATA));
-    state = {};
-  }
-}
-
-function saveAll() {
-  try {
-    localStorage.setItem(STORAGE_KEY_SECTIONS, JSON.stringify(sections));
-    localStorage.setItem(STORAGE_KEY_STATUS, JSON.stringify(state));
-    const ind = document.getElementById("save-indicator");
-    if (ind) ind.textContent = "נשמר ✓";
-  } catch (e) {
-    console.error("Save error", e);
-  }
-}
-
-function setItemStatus(itemId, newStatus) {
-  if (!state[itemId]) state[itemId] = {};
-  if (state[itemId].status === newStatus) {
-    delete state[itemId].status;
-  } else {
-    state[itemId].status = newStatus;
-  }
-  saveAll();
-  render();
-}
-
-function setItemNote(itemId, noteText) {
-  if (!state[itemId]) state[itemId] = {};
-  state[itemId].note = noteText;
-  saveAll();
-}
-
-function setFilter(filter, btn) {
-  currentFilter = filter;
-  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
-  btn.classList.add("active");
-  render();
-}
-
-function toggleDaylight(sectionId) {
-  const sec = sections.find(function(s) { return s.id === sectionId; });
-  if (!sec) return;
-  sec.isDaylight = !sec.isDaylight;
-  
-  if (sec.isDaylight) {
-    sec.title = sec.title.replace("(תאורה פנימית 💡)", "(חובה באור יום ☀️)").replace("(💡)", "(באור יום ☀️)");
-    if (!sec.title.includes("☀️")) sec.title += " (באור יום ☀️)";
-    showToast("הוגדר: חובה באור יום ☀️");
-  } else {
-    sec.title = sec.title.replace("(חובה באור יום ☀️)", "(תאורה פנימית 💡)").replace("(באור יום ☀️)", "(💡)");
-    if (!sec.title.includes("💡")) sec.title += " (תאורה פנימית 💡)";
-    showToast("הוגדר: תאורה 💡");
-  }
-  saveAll();
-  render();
-}
-
-function editSection(sectionId) {
-  const sec = sections.find(function(s) { return s.id === sectionId; });
-  if (!sec) return;
-  const act = prompt("בחר פעולה לאזור זה: 1 לעריכת שם החלל, 2 למחיקת החלל וסעיפיו", "1");
-  if (act === "1") {
-    const newTitle = prompt("ערוך שם חלל / אזור:", sec.title);
-    if (newTitle && newTitle.trim()) {
-      sec.title = newTitle.trim();
-      saveAll();
-      render();
-      showToast("שם החלל עודכן!");
-    }
-  } else if (act === "2") {
-    if (confirm("בטוח שברצונך למחוק את החלל " + sec.title + " וכל סעיפיו?")) {
-      sections = sections.filter(function(s) { return s.id !== sectionId; });
-      saveAll();
-      render();
-      showToast("החלל נמחק!");
-    }
-  }
-}
-
-function promptAddItem(sectionId) {
-  const title = prompt("הכנס שם סעיף בדיקה חדש:");
-  if (!title || !title.trim()) return;
-  const desc = prompt("הכנס תיאור / דגשים לבדיקה (או אשר ריק):") || "";
-  
-  const sec = sections.find(function(s) { return s.id === sectionId; });
-  if (sec) {
-    const newItem = {
-      id: "custom_" + Date.now() + "_" + Math.floor(Math.random()*1000),
-      title: title.trim(),
-      desc: desc.trim()
-    };
-    sec.items.push(newItem);
-    saveAll();
-    render();
-    showToast("סעיף נוסף בהצלחה!");
-  }
-}
-
-function promptAddSection() {
-  const title = prompt("הכנס שם לחלל / אזור הבדיקה החדש:");
-  if (!title || !title.trim()) return;
-  const isDay = confirm("האם חלל זה דורש בדיקה באור יום?");
-  
-  const newSec = {
-    id: "sec_custom_" + Date.now(),
-    title: title.trim() + (isDay ? " (באור יום ☀️)" : " (תאורה 💡)"),
-    isDaylight: isDay,
-    items: []
-  };
-  sections.push(newSec);
-  saveAll();
-  render();
-  showToast("חלל חדש נוסף!");
-}
-
-function editItem(sectionId, itemId) {
-  const sec = sections.find(function(s) { return s.id === sectionId; });
-  if (!sec) return;
-  const item = sec.items.find(function(i) { return i.id === itemId; });
-  if (!item) return;
-
-  const act = prompt("בחר פעולה: 1 לעריכת שם/תיאור, 2 למחיקת הסעיף", "1");
-  if (act === "1") {
-    const newTitle = prompt("ערוך שם סעיף:", item.title);
-    if (newTitle && newTitle.trim()) item.title = newTitle.trim();
-    const newDesc = prompt("ערוך תיאור סעיף:", item.desc);
-    if (newDesc !== null) item.desc = newDesc.trim();
-    saveAll();
-    render();
-    showToast("הסעיף עודכן!");
-  } else if (act === "2") {
-    if (confirm("בטוח שברצונך למחוק סעיף זה?")) {
-      sec.items = sec.items.filter(function(i) { return i.id !== itemId; });
-      delete state[itemId];
-      saveAll();
-      render();
-      showToast("הסעיף נמחק!");
-    }
-  }
-}
-
-function escapeHtml(str) {
-  if (!str) return "";
-  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-}
-
-function render() {
-  const container = document.getElementById("checklist-container");
-  if (!container) return;
-  container.innerHTML = "";
-
-  let countV = 0;
-  let countX = 0;
-  let countTotal = 0;
-
-  sections.forEach(function(section) {
-    let visibleCount = 0;
-    let secV = 0;
-    let secX = 0;
-    const itemRows = [];
-
-    section.items.forEach(function(item) {
-      countTotal++;
-      const itemState = state[item.id] || {};
-      const status = itemState.status || null;
-      const note = itemState.note || "";
-
-      if (status === "pass") { countV++; secV++; }
-      if (status === "fail") { countX++; secX++; }
-
-      let isVisible = true;
-      if (currentFilter === "day" && !section.isDaylight) isVisible = false;
-      if (currentFilter === "interior" && section.isDaylight) isVisible = false;
-      if (currentFilter === "fail" && status !== "fail") isVisible = false;
-      if (currentFilter === "pass" && status !== "pass") isVisible = false;
-      if (currentFilter === "pending" && status !== null) isVisible = false;
-
-      if (!isVisible) return;
-      visibleCount++;
-
-      const row = document.createElement("div");
-      row.className = "item-row" + (status === "pass" ? " state-pass" : (status === "fail" ? " state-fail" : "")) + (note ? " has-note" : "");
-      row.id = "row-" + item.id;
-
-      const topRow = document.createElement("div");
-      topRow.className = "item-top-row";
-
-      const titleEl = document.createElement("div");
-      titleEl.className = "item-title";
-      titleEl.textContent = item.title;
-      topRow.appendChild(titleEl);
-
-      const menuBtn = document.createElement("button");
-      menuBtn.className = "item-menu-btn";
-      menuBtn.textContent = "⚙️";
-      menuBtn.title = "ערוך סעיף";
-      menuBtn.onclick = function() { editItem(section.id, item.id); };
-      topRow.appendChild(menuBtn);
-
-      row.appendChild(topRow);
-
-      const descEl = document.createElement("div");
-      descEl.className = "item-desc";
-      descEl.textContent = item.desc;
-      row.appendChild(descEl);
-
-      const actionGroup = document.createElement("div");
-      actionGroup.className = "action-group";
-
-      const passBtn = document.createElement("button");
-      passBtn.className = "btn-action btn-pass" + (status === "pass" ? " active" : "");
-      passBtn.textContent = "✓ תקין";
-      passBtn.onclick = function() { setItemStatus(item.id, "pass"); };
-      actionGroup.appendChild(passBtn);
-
-      const failBtn = document.createElement("button");
-      failBtn.className = "btn-action btn-fail" + (status === "fail" ? " active" : "");
-      failBtn.textContent = "✗ ליקוי";
-      failBtn.onclick = function() { setItemStatus(item.id, "fail"); };
-      actionGroup.appendChild(failBtn);
-
-      row.appendChild(actionGroup);
-
-      const noteInput = document.createElement("input");
-      noteInput.type = "text";
-      noteInput.className = "note-input";
-      noteInput.placeholder = "הערה לליקוי / מיקום ספציפי...";
-      noteInput.value = note;
-      noteInput.oninput = function() { setItemNote(item.id, noteInput.value); };
-      row.appendChild(noteInput);
-
-      itemRows.push(row);
-    });
-
-    if (visibleCount > 0 || currentFilter === "all") {
-      const sectionEl = document.createElement("div");
-      sectionEl.className = "section-card";
-
-      const headerEl = document.createElement("div");
-      headerEl.className = "section-header " + (section.isDaylight ? "section-day" : "section-interior");
-
-      const titleWrap = document.createElement("div");
-      titleWrap.style.cssText = "display:flex; align-items:center; gap:6px; flex-wrap:wrap;";
-
-      const titleSpan = document.createElement("span");
-      titleSpan.textContent = section.title;
-      titleWrap.appendChild(titleSpan);
-
-      const badgeToggle = document.createElement("button");
-      badgeToggle.className = "badge-toggle " + (section.isDaylight ? "badge-day-on" : "badge-day-off");
-      badgeToggle.textContent = section.isDaylight ? "☀️ אור יום" : "💡 תאורה";
-      badgeToggle.title = section.isDaylight ? "לחץ להחלפה לבדיקת תאורה" : "לחץ להחלפה לחובה באור יום";
-      badgeToggle.onclick = function() { toggleDaylight(section.id); };
-      titleWrap.appendChild(badgeToggle);
-
-      const countSpan = document.createElement("span");
-      countSpan.style.cssText = "font-size:0.75rem; font-weight:normal; opacity:0.85;";
-      countSpan.textContent = "(✓ " + secV + " | ✗ " + secX + ")";
-      titleWrap.appendChild(countSpan);
-
-      headerEl.appendChild(titleWrap);
-
-      const actionsWrap = document.createElement("div");
-      actionsWrap.className = "section-actions";
-
-      const editSecBtn = document.createElement("button");
-      editSecBtn.className = "btn-add-item";
-      editSecBtn.textContent = "⚙️ ערוך חלל";
-      editSecBtn.onclick = function() { editSection(section.id); };
-      actionsWrap.appendChild(editSecBtn);
-
-      const addItemBtn = document.createElement("button");
-      addItemBtn.className = "btn-add-item";
-      addItemBtn.textContent = "+ הוסף סעיף";
-      addItemBtn.onclick = function() { promptAddItem(section.id); };
-      actionsWrap.appendChild(addItemBtn);
-
-      headerEl.appendChild(actionsWrap);
-      sectionEl.appendChild(headerEl);
-
-      itemRows.forEach(function(r) { sectionEl.appendChild(r); });
-      container.appendChild(sectionEl);
-    }
-  });
-
-  document.getElementById("count-v").textContent = countV;
-  document.getElementById("count-x").textContent = countX;
-  document.getElementById("count-total").textContent = countTotal;
-  document.getElementById("count-pending").textContent = countTotal - (countV + countX);
-}
-
-function showToast(msg) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  setTimeout(function() { t.classList.remove("show"); }, 2000);
-}
-
-function copyFailuresSummary() {
-  let failures = [];
-  sections.forEach(function(section) {
-    let secFailures = [];
-    section.items.forEach(function(item) {
-      const itemState = state[item.id] || {};
-      if (itemState.status === "fail") {
-        let line = "• " + item.title;
-        if (itemState.note && itemState.note.trim()) line += " (" + itemState.note.trim() + ")";
-        secFailures.push(line);
+        const savedChk = localStorage.getItem(STORAGE_KEY_CHECKED);
+        checkedMap = savedChk ? JSON.parse(savedChk) : {};
+      } catch (e) {
+        console.error("Init error", e);
+        sections = JSON.parse(JSON.stringify(INITIAL_DATA));
+        checkedMap = {};
       }
-    });
-    if (secFailures.length > 0) {
-      failures.push("*" + section.title + ":*
-" + secFailures.join("
-"));
     }
-  });
 
-  if (failures.length === 0) {
-    showToast("אין ליקויים שסומנו ב-✗");
-    return;
-  }
+    function saveAll() {
+      try {
+        localStorage.setItem(STORAGE_KEY_SECTIONS, JSON.stringify(sections));
+        localStorage.setItem(STORAGE_KEY_CHECKED, JSON.stringify(checkedMap));
+        const ind = document.getElementById("save-indicator");
+        if (ind) ind.textContent = "נשמר ✓";
+      } catch (e) {
+        console.error("Save error", e);
+      }
+    }
 
-  const text = "*סיכום ליקויים שנמצאו בבדיקה:*
+    function toggleCheck(itemId) {
+      if (checkedMap[itemId]) {
+        delete checkedMap[itemId];
+      } else {
+        checkedMap[itemId] = true;
+      }
+      saveAll();
+      render();
+    }
 
-" + failures.join("
+    function setFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      render();
+    }
 
-");
-  navigator.clipboard.writeText(text).then(function() {
-    showToast("סיכום הליקויים הועתק ללוח!");
-  }).catch(function() {
-    showToast("נכשל בהעתקה אוטומטית");
-  });
-}
+    function toggleDaylight(sectionId) {
+      const sec = sections.find(function(s) { return s.id === sectionId; });
+      if (!sec) return;
+      sec.isDaylight = !sec.isDaylight;
+      
+      if (sec.isDaylight) {
+        sec.title = sec.title.replace("(תאורה פנימית 💡)", "(חובה באור יום ☀️)").replace("(💡)", "(באור יום ☀️)");
+        if (!sec.title.includes("☀️")) sec.title += " (באור יום ☀️)";
+        showToast("הוגדר: חובה באור יום ☀️");
+      } else {
+        sec.title = sec.title.replace("(חובה באור יום ☀️)", "(תאורה פנימית 💡)").replace("(באור יום ☀️)", "(💡)");
+        if (!sec.title.includes("💡")) sec.title += " (תאורה פנימית 💡)";
+        showToast("הוגדר: תאורה 💡");
+      }
+      saveAll();
+      render();
+    }
 
-function resetAll() {
-  if (confirm("האם לאפס את כל הסימונים ולהתחיל בדיקה חדשה?")) {
-    state = {};
-    saveAll();
+    function editSection(sectionId) {
+      const sec = sections.find(function(s) { return s.id === sectionId; });
+      if (!sec) return;
+      const act = prompt("בחר פעולה: 1 לעריכת שם החלל, 2 למחיקת החלל כולו", "1");
+      if (act === "1") {
+        const newTitle = prompt("ערוך שם חלל / אזור:", sec.title);
+        if (newTitle && newTitle.trim()) {
+          sec.title = newTitle.trim();
+          saveAll();
+          render();
+          showToast("שם החלל עודכן!");
+        }
+      } else if (act === "2") {
+        if (confirm("בטוח שברצונך למחוק את חלל " + sec.title + "?")) {
+          sections = sections.filter(function(s) { return s.id !== sectionId; });
+          saveAll();
+          render();
+          showToast("החלל נמחק!");
+        }
+      }
+    }
+
+    function promptAddItem(sectionId) {
+      const title = prompt("הכנס שם סעיף בדיקה חדש:");
+      if (!title || !title.trim()) return;
+      const desc = prompt("הכנס דגשים לבדיקה (או אשר ריק):") || "";
+      
+      const sec = sections.find(function(s) { return s.id === sectionId; });
+      if (sec) {
+        sec.items.push({
+          id: "custom_" + Date.now() + "_" + Math.floor(Math.random()*1000),
+          title: title.trim(),
+          desc: desc.trim()
+        });
+        saveAll();
+        render();
+        showToast("סעיף נוסף!");
+      }
+    }
+
+    function promptAddSection() {
+      const title = prompt("הכנס שם לחלל / אזור הבדיקה החדש:");
+      if (!title || !title.trim()) return;
+      const isDay = confirm("האם חלל זה דורש בדיקה באור יום?");
+      
+      sections.push({
+        id: "sec_custom_" + Date.now(),
+        title: title.trim() + (isDay ? " (באור יום ☀️)" : " (תאורה 💡)"),
+        isDaylight: isDay,
+        items: []
+      });
+      saveAll();
+      render();
+      showToast("חלל חדש נוסף!");
+    }
+
+    function editItem(sectionId, itemId) {
+      const sec = sections.find(function(s) { return s.id === sectionId; });
+      if (!sec) return;
+      const item = sec.items.find(function(i) { return i.id === itemId; });
+      if (!item) return;
+
+      const act = prompt("בחר פעולה: 1 לעריכת שם/תיאור, 2 למחיקת הסעיף", "1");
+      if (act === "1") {
+        const newTitle = prompt("ערוך שם סעיף:", item.title);
+        if (newTitle && newTitle.trim()) item.title = newTitle.trim();
+        const newDesc = prompt("ערוך תיאור סעיף:", item.desc);
+        if (newDesc !== null) item.desc = newDesc.trim();
+        saveAll();
+        render();
+        showToast("הסעיף עודכן!");
+      } else if (act === "2") {
+        if (confirm("למחוק סעיף זה?")) {
+          sec.items = sec.items.filter(function(i) { return i.id !== itemId; });
+          delete checkedMap[itemId];
+          saveAll();
+          render();
+          showToast("הסעיף נמחק!");
+        }
+      }
+    }
+
+    function render() {
+      const container = document.getElementById("checklist-container");
+      if (!container) return;
+      container.innerHTML = "";
+
+      let countChecked = 0;
+      let countTotal = 0;
+
+      sections.forEach(function(section) {
+        let visibleCount = 0;
+        let secChecked = 0;
+        const itemRows = [];
+
+        section.items.forEach(function(item) {
+          countTotal++;
+          const isChecked = !!checkedMap[item.id];
+          if (isChecked) { countChecked++; secChecked++; }
+
+          let isVisible = true;
+          if (currentFilter === "day" && !section.isDaylight) isVisible = false;
+          if (currentFilter === "interior" && section.isDaylight) isVisible = false;
+          if (currentFilter === "checked" && !isChecked) isVisible = false;
+          if (currentFilter === "pending" && isChecked) isVisible = false;
+
+          if (!isVisible) return;
+          visibleCount++;
+
+          const row = document.createElement("div");
+          row.className = "item-row" + (isChecked ? " state-checked" : "");
+          row.id = "row-" + item.id;
+          row.onclick = function(e) {
+            if (e.target.closest(".item-menu-btn")) return;
+            toggleCheck(item.id);
+          };
+
+          const circle = document.createElement("div");
+          circle.className = "check-circle";
+          circle.textContent = "✓";
+          row.appendChild(circle);
+
+          const details = document.createElement("div");
+          details.className = "item-details";
+
+          const topRow = document.createElement("div");
+          topRow.className = "item-top-row";
+
+          const titleEl = document.createElement("div");
+          titleEl.className = "item-title";
+          titleEl.textContent = item.title;
+          topRow.appendChild(titleEl);
+
+          const menuBtn = document.createElement("button");
+          menuBtn.className = "item-menu-btn";
+          menuBtn.textContent = "⚙️";
+          menuBtn.title = "ערוך סעיף";
+          menuBtn.onclick = function(e) {
+            e.stopPropagation();
+            editItem(section.id, item.id);
+          };
+          topRow.appendChild(menuBtn);
+
+          details.appendChild(topRow);
+
+          if (item.desc) {
+            const descEl = document.createElement("div");
+            descEl.className = "item-desc";
+            descEl.textContent = item.desc;
+            details.appendChild(descEl);
+          }
+
+          row.appendChild(details);
+          itemRows.push(row);
+        });
+
+        if (visibleCount > 0 || currentFilter === "all") {
+          const sectionEl = document.createElement("div");
+          sectionEl.className = "section-card";
+
+          const headerEl = document.createElement("div");
+          headerEl.className = "section-header " + (section.isDaylight ? "section-day" : "section-interior");
+
+          const titleWrap = document.createElement("div");
+          titleWrap.style.cssText = "display:flex; align-items:center; gap:6px; flex-wrap:wrap;";
+
+          const titleSpan = document.createElement("span");
+          titleSpan.textContent = section.title;
+          titleWrap.appendChild(titleSpan);
+
+          const badgeToggle = document.createElement("button");
+          badgeToggle.className = "badge-toggle " + (section.isDaylight ? "badge-day-on" : "badge-day-off");
+          badgeToggle.textContent = section.isDaylight ? "☀️ אור יום" : "💡 תאורה";
+          badgeToggle.title = section.isDaylight ? "לחץ להחלפה לבדיקת תאורה" : "לחץ להחלפה לחובה באור יום";
+          badgeToggle.onclick = function() { toggleDaylight(section.id); };
+          titleWrap.appendChild(badgeToggle);
+
+          const countSpan = document.createElement("span");
+          countSpan.style.cssText = "font-size:0.75rem; font-weight:normal; opacity:0.85;";
+          countSpan.textContent = "(נבדקו " + secChecked + " מתוך " + section.items.length + ")";
+          titleWrap.appendChild(countSpan);
+
+          headerEl.appendChild(titleWrap);
+
+          const actionsWrap = document.createElement("div");
+          actionsWrap.className = "section-actions";
+
+          const editSecBtn = document.createElement("button");
+          editSecBtn.className = "btn-header-act";
+          editSecBtn.textContent = "⚙️ ערוך חלל";
+          editSecBtn.onclick = function() { editSection(section.id); };
+          actionsWrap.appendChild(editSecBtn);
+
+          const addItemBtn = document.createElement("button");
+          addItemBtn.className = "btn-header-act";
+          addItemBtn.textContent = "+ הוסף סעיף";
+          addItemBtn.onclick = function() { promptAddItem(section.id); };
+          actionsWrap.appendChild(addItemBtn);
+
+          headerEl.appendChild(actionsWrap);
+          sectionEl.appendChild(headerEl);
+
+          itemRows.forEach(function(r) { sectionEl.appendChild(r); });
+          container.appendChild(sectionEl);
+        }
+      });
+
+      document.getElementById("count-checked").textContent = countChecked;
+      document.getElementById("count-total").textContent = countTotal;
+      document.getElementById("count-pending").textContent = countTotal - countChecked;
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(function() { t.classList.remove("show"); }, 2000);
+    }
+
+    function copyCheckedSummary() {
+      let outputSections = [];
+      sections.forEach(function(section) {
+        let checkedInSec = [];
+        section.items.forEach(function(item) {
+          if (checkedMap[item.id]) {
+            checkedInSec.push("✓ " + item.title);
+          }
+        });
+        if (checkedInSec.length > 0) {
+          // מנקים אייקונים מהכותרת ללקוח
+          const cleanTitle = section.title.replace(/\(.*?\)/g, "").trim();
+          outputSections.push("*" + cleanTitle + ":*
+" + checkedInSec.join("
+"));
+        }
+      });
+
+      if (outputSections.length === 0) {
+        showToast("טרם סומנו סעיפים שנבדקו");
+        return;
+      }
+
+      const headerText = "*פירוט הבדיקות המקצועיות שנערכו בנכס על ידי צ. ביקורת מבנים:*
+
+";
+      const footerText = "
+
+*כלל הממצאים והמדידות המלאות מתועדים בדוח הבדיקה המפורט.*";
+      const fullMessage = headerText + outputSections.join("
+
+") + footerText;
+
+      navigator.clipboard.writeText(fullMessage).then(function() {
+        showToast("הודעת הסיכום הועתקה ללוח!");
+      }).catch(function() {
+        showToast("נכשל בהעתקה");
+      });
+    }
+
+    function resetAll() {
+      if (confirm("האם לאפס את כל הסימונים ולהתחיל בדיקת דירה חדשה?")) {
+        checkedMap = {};
+        saveAll();
+        render();
+        showToast("כל הסימונים אופסו!");
+      }
+    }
+
+    initData();
     render();
-    showToast("כל הסימונים אופסו!");
-  }
-}
-
-initData();
-render();
-
   </script>
 </body>
 </html>
