@@ -263,6 +263,31 @@
       render();
     }
 
+    
+    function moveSectionUp(sectionId) {
+      const idx = sections.findIndex(function(s) { return s.id === sectionId; });
+      if (idx > 0) {
+        const temp = sections[idx];
+        sections[idx] = sections[idx - 1];
+        sections[idx - 1] = temp;
+        saveAll();
+        render();
+        showToast("החלל הועלה למעלה!");
+      }
+    }
+
+    function moveSectionDown(sectionId) {
+      const idx = sections.findIndex(function(s) { return s.id === sectionId; });
+      if (idx !== -1 && idx < sections.length - 1) {
+        const temp = sections[idx];
+        sections[idx] = sections[idx + 1];
+        sections[idx + 1] = temp;
+        saveAll();
+        render();
+        showToast("החלל הורד למטה!");
+      }
+    }
+
     function editSection(sectionId) {
       const sec = sections.find(function(s) { return s.id === sectionId; });
       if (!sec) return;
@@ -450,7 +475,23 @@
           const actionsWrap = document.createElement("div");
           actionsWrap.className = "section-actions";
 
+          
+          const moveUpBtn = document.createElement("button");
+          moveUpBtn.className = "btn-header-act";
+          moveUpBtn.textContent = "⬆️";
+          moveUpBtn.title = "העלה למעלה";
+          moveUpBtn.onclick = function() { moveSectionUp(section.id); };
+          actionsWrap.appendChild(moveUpBtn);
+
+          const moveDownBtn = document.createElement("button");
+          moveDownBtn.className = "btn-header-act";
+          moveDownBtn.textContent = "⬇️";
+          moveDownBtn.title = "הורד למטה";
+          moveDownBtn.onclick = function() { moveSectionDown(section.id); };
+          actionsWrap.appendChild(moveDownBtn);
+
           const editSecBtn = document.createElement("button");
+
           editSecBtn.className = "btn-header-act";
           editSecBtn.textContent = "⚙️ ערוך חלל";
           editSecBtn.onclick = function() { editSection(section.id); };
