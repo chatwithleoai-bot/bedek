@@ -522,7 +522,7 @@ function copyFailuresSummary() {
       }
     });
     if (secFailures.length > 0) {
-      failures.push("*" + section.title + ":*\n"" + secFailures.join("
+      failures.push("*" + section.title + ":*\n" + secFailures.join("\n"));
 "));
     }
   });
@@ -532,7 +532,7 @@ function copyFailuresSummary() {
     return;
   }
 
-  const text = "*סיכום ליקויים שנמצאו בבדיקה:*\n\n"" + failures.join("
+  const text = "*סיכום ליקויים שנמצאו בבדיקה:*\n\n" + failures.join("\n\n");
 
 ");
   navigator.clipboard.writeText(text).then(function() {
