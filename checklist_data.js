@@ -57,13 +57,13 @@ function setItemNote(itemId, noteText) {
 
 function setFilter(filter, btn) {
   currentFilter = filter;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+  btn.classList.add("active");
   render();
 }
 
 function toggleDaylight(sectionId) {
-  const sec = sections.find(s => s.id === sectionId);
+  const sec = sections.find(function(s) { return s.id === sectionId; });
   if (!sec) return;
   sec.isDaylight = !sec.isDaylight;
   
@@ -85,7 +85,7 @@ function promptAddItem(sectionId) {
   if (!title || !title.trim()) return;
   const desc = prompt("הכנס תיאור / דגשים לבדיקה (או אשר ריק):") || "";
   
-  const sec = sections.find(s => s.id === sectionId);
+  const sec = sections.find(function(s) { return s.id === sectionId; });
   if (sec) {
     const newItem = {
       id: "custom_" + Date.now() + "_" + Math.floor(Math.random()*1000),
@@ -117,9 +117,9 @@ function promptAddSection() {
 }
 
 function editItem(sectionId, itemId) {
-  const sec = sections.find(s => s.id === sectionId);
+  const sec = sections.find(function(s) { return s.id === sectionId; });
   if (!sec) return;
-  const item = sec.items.find(i => i.id === itemId);
+  const item = sec.items.find(function(i) { return i.id === itemId; });
   if (!item) return;
 
   const act = prompt("בחר פעולה: 1 לעריכת שם/תיאור, 2 למחיקת הסעיף", "1");
@@ -133,13 +133,18 @@ function editItem(sectionId, itemId) {
     showToast("הסעיף עודכן!");
   } else if (act === "2") {
     if (confirm("בטוח שברצונך למחוק סעיף זה?")) {
-      sec.items = sec.items.filter(i => i.id !== itemId);
+      sec.items = sec.items.filter(function(i) { return i.id !== itemId; });
       delete state[itemId];
       saveAll();
       render();
       showToast("הסעיף נמחק!");
     }
   }
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 function render() {
@@ -151,70 +156,126 @@ function render() {
   let countX = 0;
   let countTotal = 0;
 
-  sections.forEach(section => {
-    let sectionItemsHtml = "";
+  sections.forEach(function(section) {
     let visibleCount = 0;
     let secV = 0;
     let secX = 0;
+    const itemRows = [];
 
-    section.items.forEach(item => {
+    section.items.forEach(function(item) {
       countTotal++;
       const itemState = state[item.id] || {};
       const status = itemState.status || null;
       const note = itemState.note || "";
 
-      if (status === 'pass') { countV++; secV++; }
-      if (status === 'fail') { countX++; secX++; }
+      if (status === "pass") { countV++; secV++; }
+      if (status === "fail") { countX++; secX++; }
 
       let isVisible = true;
-      if (currentFilter === 'day' && !section.isDaylight) isVisible = false;
-      if (currentFilter === 'interior' && section.isDaylight) isVisible = false;
-      if (currentFilter === 'fail' && status !== 'fail') isVisible = false;
-      if (currentFilter === 'pass' && status !== 'pass') isVisible = false;
-      if (currentFilter === 'pending' && status !== null) isVisible = false;
+      if (currentFilter === "day" && !section.isDaylight) isVisible = false;
+      if (currentFilter === "interior" && section.isDaylight) isVisible = false;
+      if (currentFilter === "fail" && status !== "fail") isVisible = false;
+      if (currentFilter === "pass" && status !== "pass") isVisible = false;
+      if (currentFilter === "pending" && status !== null) isVisible = false;
 
       if (!isVisible) return;
       visibleCount++;
 
-      const rowClass = status === 'pass' ? 'state-pass' : (status === 'fail' ? 'state-fail' : '');
-      const passActive = status === 'pass' ? 'active' : '';
-      const failActive = status === 'fail' ? 'active' : '';
-      const hasNoteClass = note ? 'has-note' : '';
+      const row = document.createElement("div");
+      row.className = "item-row" + (status === "pass" ? " state-pass" : (status === "fail" ? " state-fail" : "")) + (note ? " has-note" : "");
+      row.id = "row-" + item.id;
 
-      sectionItemsHtml += '<div class="item-row ' + rowClass + ' ' + hasNoteClass + '" id="row-' + item.id + '">'
-        + '<div class="item-top-row">'
-        + '  <div class="item-title">' + escapeHtml(item.title) + '</div>'
-        + '  <button class="item-menu-btn" onclick="editItem('' + section.id + '', '' + item.id + '')" title="ערוך סעיף">⚙️</button>'
-        + '</div>'
-        + '<div class="item-desc">' + escapeHtml(item.desc) + '</div>'
-        + '<div class="action-group">'
-        + '  <button class="btn-action btn-pass ' + passActive + '" onclick="setItemStatus('' + item.id + '', 'pass')">✓ תקין</button>'
-        + '  <button class="btn-action btn-fail ' + failActive + '" onclick="setItemStatus('' + item.id + '', 'fail')">✗ ליקוי</button>'
-        + '</div>'
-        + '<input type="text" class="note-input" placeholder="הערה לליקוי / מיקום ספציפי..." value="' + escapeHtml(note) + '" oninput="setItemNote('' + item.id + '', this.value)">'
-        + '</div>';
+      const topRow = document.createElement("div");
+      topRow.className = "item-top-row";
+
+      const titleEl = document.createElement("div");
+      titleEl.className = "item-title";
+      titleEl.textContent = item.title;
+      topRow.appendChild(titleEl);
+
+      const menuBtn = document.createElement("button");
+      menuBtn.className = "item-menu-btn";
+      menuBtn.textContent = "⚙️";
+      menuBtn.title = "ערוך סעיף";
+      menuBtn.onclick = function() { editItem(section.id, item.id); };
+      topRow.appendChild(menuBtn);
+
+      row.appendChild(topRow);
+
+      const descEl = document.createElement("div");
+      descEl.className = "item-desc";
+      descEl.textContent = item.desc;
+      row.appendChild(descEl);
+
+      const actionGroup = document.createElement("div");
+      actionGroup.className = "action-group";
+
+      const passBtn = document.createElement("button");
+      passBtn.className = "btn-action btn-pass" + (status === "pass" ? " active" : "");
+      passBtn.textContent = "✓ תקין";
+      passBtn.onclick = function() { setItemStatus(item.id, "pass"); };
+      actionGroup.appendChild(passBtn);
+
+      const failBtn = document.createElement("button");
+      failBtn.className = "btn-action btn-fail" + (status === "fail" ? " active" : "");
+      failBtn.textContent = "✗ ליקוי";
+      failBtn.onclick = function() { setItemStatus(item.id, "fail"); };
+      actionGroup.appendChild(failBtn);
+
+      row.appendChild(actionGroup);
+
+      const noteInput = document.createElement("input");
+      noteInput.type = "text";
+      noteInput.className = "note-input";
+      noteInput.placeholder = "הערה לליקוי / מיקום ספציפי...";
+      noteInput.value = note;
+      noteInput.oninput = function() { setItemNote(item.id, noteInput.value); };
+      row.appendChild(noteInput);
+
+      itemRows.push(row);
     });
 
-    if (visibleCount > 0 || currentFilter === 'all') {
+    if (visibleCount > 0 || currentFilter === "all") {
       const sectionEl = document.createElement("div");
       sectionEl.className = "section-card";
-      const headerTheme = section.isDaylight ? "section-day" : "section-interior";
-      const daylightBadge = section.isDaylight 
-        ? '<button class="badge-toggle badge-day-on" onclick="toggleDaylight('' + section.id + '')" title="לחץ להחלפה לבדיקת תאורה">☀️ אור יום</button>'
-        : '<button class="badge-toggle badge-day-off" onclick="toggleDaylight('' + section.id + '')" title="לחץ להחלפה לחובה באור יום">💡 תאורה</button>';
-      
-      sectionEl.innerHTML = '<div class="section-header ' + headerTheme + '">'
-        + '<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">'
-        + '  <span>' + escapeHtml(section.title) + '</span>'
-        + '  ' + daylightBadge
-        + '  <span style="font-size:0.75rem; font-weight:normal; opacity:0.85;">(✓ ' + secV + ' | ✗ ' + secX + ')</span>'
-        + '</div>'
-        + '<div class="section-actions">'
-        + '  <button class="btn-add-item" onclick="promptAddItem('' + section.id + '')">+ הוסף סעיף</button>'
-        + '</div>'
-        + '</div>'
-        + sectionItemsHtml;
-        
+
+      const headerEl = document.createElement("div");
+      headerEl.className = "section-header " + (section.isDaylight ? "section-day" : "section-interior");
+
+      const titleWrap = document.createElement("div");
+      titleWrap.style.cssText = "display:flex; align-items:center; gap:6px; flex-wrap:wrap;";
+
+      const titleSpan = document.createElement("span");
+      titleSpan.textContent = section.title;
+      titleWrap.appendChild(titleSpan);
+
+      const badgeToggle = document.createElement("button");
+      badgeToggle.className = "badge-toggle " + (section.isDaylight ? "badge-day-on" : "badge-day-off");
+      badgeToggle.textContent = section.isDaylight ? "☀️ אור יום" : "💡 תאורה";
+      badgeToggle.title = section.isDaylight ? "לחץ להחלפה לבדיקת תאורה" : "לחץ להחלפה לחובה באור יום";
+      badgeToggle.onclick = function() { toggleDaylight(section.id); };
+      titleWrap.appendChild(badgeToggle);
+
+      const countSpan = document.createElement("span");
+      countSpan.style.cssText = "font-size:0.75rem; font-weight:normal; opacity:0.85;";
+      countSpan.textContent = "(✓ " + secV + " | ✗ " + secX + ")";
+      titleWrap.appendChild(countSpan);
+
+      headerEl.appendChild(titleWrap);
+
+      const actionsWrap = document.createElement("div");
+      actionsWrap.className = "section-actions";
+
+      const addItemBtn = document.createElement("button");
+      addItemBtn.className = "btn-add-item";
+      addItemBtn.textContent = "+ הוסף סעיף";
+      addItemBtn.onclick = function() { promptAddItem(section.id); };
+      actionsWrap.appendChild(addItemBtn);
+
+      headerEl.appendChild(actionsWrap);
+      sectionEl.appendChild(headerEl);
+
+      itemRows.forEach(function(r) { sectionEl.appendChild(r); });
       container.appendChild(sectionEl);
     }
   });
@@ -225,25 +286,20 @@ function render() {
   document.getElementById("count-pending").textContent = countTotal - (countV + countX);
 }
 
-function escapeHtml(str) {
-  if (!str) return "";
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-}
-
 function showToast(msg) {
   const t = document.getElementById("toast");
   t.textContent = msg;
   t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 2000);
+  setTimeout(function() { t.classList.remove("show"); }, 2000);
 }
 
 function copyFailuresSummary() {
   let failures = [];
-  sections.forEach(section => {
+  sections.forEach(function(section) {
     let secFailures = [];
-    section.items.forEach(item => {
+    section.items.forEach(function(item) {
       const itemState = state[item.id] || {};
-      if (itemState.status === 'fail') {
+      if (itemState.status === "fail") {
         let line = "• " + item.title;
         if (itemState.note && itemState.note.trim()) line += " (" + itemState.note.trim() + ")";
         secFailures.push(line);
@@ -266,9 +322,9 @@ function copyFailuresSummary() {
 " + failures.join("
 
 ");
-  navigator.clipboard.writeText(text).then(() => {
+  navigator.clipboard.writeText(text).then(function() {
     showToast("סיכום הליקויים הועתק ללוח!");
-  }).catch(() => {
+  }).catch(function() {
     showToast("נכשל בהעתקה אוטומטית");
   });
 }
