@@ -332,6 +332,31 @@ function promptAddSection() {
   showToast("חלל חדש נוסף!");
 }
 
+
+function editSection(sectionId) {
+  const sec = sections.find(function(s) { return s.id === sectionId; });
+  if (!sec) return;
+  const act = prompt("בחר פעולה לאזור זה:
+1 - עריכת שם החלל
+2 - מחיקת כל החלל והסעיפים שבו", "1");
+  if (act === "1") {
+    const newTitle = prompt("ערוך שם חלל / אזור:", sec.title);
+    if (newTitle && newTitle.trim()) {
+      sec.title = newTitle.trim();
+      saveAll();
+      render();
+      showToast("שם החלל עודכן!");
+    }
+  } else if (act === "2") {
+    if (confirm("בטוח שברצונך למחוק את חלל " + sec.title + " וכל סעיפיו?")) {
+      sections = sections.filter(function(s) { return s.id !== sectionId; });
+      saveAll();
+      render();
+      showToast("החלל נמחק!");
+    }
+  }
+}
+
 function editItem(sectionId, itemId) {
   const sec = sections.find(function(s) { return s.id === sectionId; });
   if (!sec) return;
@@ -486,7 +511,15 @@ function render() {
       addItemBtn.className = "btn-add-item";
       addItemBtn.textContent = "+ הוסף סעיף";
       addItemBtn.onclick = function() { promptAddItem(section.id); };
+      
+      const editSecBtn = document.createElement("button");
+      editSecBtn.className = "btn-add-item";
+      editSecBtn.textContent = "⚙️ ערוך חלל";
+      editSecBtn.style.marginRight = "4px";
+      editSecBtn.onclick = function() { editSection(section.id); };
+      actionsWrap.appendChild(editSecBtn);
       actionsWrap.appendChild(addItemBtn);
+
 
       headerEl.appendChild(actionsWrap);
       sectionEl.appendChild(headerEl);
@@ -523,7 +556,6 @@ function copyFailuresSummary() {
     });
     if (secFailures.length > 0) {
       failures.push("*" + section.title + ":*\n" + secFailures.join("\n"));
-"));
     }
   });
 
@@ -533,8 +565,6 @@ function copyFailuresSummary() {
   }
 
   const text = "*סיכום ליקויים שנמצאו בבדיקה:*\n\n" + failures.join("\n\n");
-
-");
   navigator.clipboard.writeText(text).then(function() {
     showToast("סיכום הליקויים הועתק ללוח!");
   }).catch(function() {
