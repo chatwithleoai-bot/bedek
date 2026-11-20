@@ -1192,7 +1192,14 @@ function saveFindingModalSubmit() {
     price,
     qty,
     unit,
-    photos: [...currentModalPhotos]
+    photos: [...currentModalPhotos],
+    attachments: currentModalAttachments && currentModalAttachments.length > 0 ? [...currentModalAttachments] : [],
+    reporto_images: currentModalAttachments && currentModalAttachments.length > 0 ? currentModalAttachments.map(a => ({
+      url: a.url,
+      title: a.title,
+      standard: a.standard || std
+    })) : [],
+    std_image: currentModalAttachments && currentModalAttachments.length > 0 ? currentModalAttachments[0].url : ''
   };
 
   if (editingItemIndex >= 0) {
@@ -1357,7 +1364,14 @@ function addFindingDirectlyToActiveRoom(findingIndex) {
     price: finding.up || 350,
     qty: finding.uq || 1,
     unit: finding.ut || "יח'",
-    photos: []
+    photos: [],
+    attachments: finding.reporto_images && finding.reporto_images.length > 0 ? finding.reporto_images.map(img => ({
+      url: img.url || img,
+      title: img.title || "תרשים תקן רשמי",
+      standard: finding.std || ""
+    })) : (finding.std_image ? [{ url: finding.std_image, title: "תרשים תקן רשמי", standard: finding.std || "" }] : []),
+    reporto_images: finding.reporto_images ? [...finding.reporto_images] : (finding.std_image ? [{ url: finding.std_image, title: "תרשים תקן רשמי", standard: finding.std || "" }] : []),
+    std_image: finding.std_image || ''
   };
 
   activeInspection.items.push(newItem);
@@ -1396,7 +1410,16 @@ function generateReportDocument() {
   const allStdScreenshots = [];
   const seenUrls = new Set();
   items.forEach((it, idx) => {
-    const stdImgs = it.reporto_images || it.standard_images || [];
+    let stdImgs = [];
+    if (it.attachments && it.attachments.length > 0) {
+      stdImgs = it.attachments;
+    } else if (it.reporto_images && it.reporto_images.length > 0) {
+      stdImgs = it.reporto_images;
+    } else if (it.standard_images && it.standard_images.length > 0) {
+      stdImgs = it.standard_images;
+    } else if (it.std_image) {
+      stdImgs = [{ url: it.std_image, title: 'תרשים תקן רשמי', standard: it.std || '' }];
+    }
     stdImgs.forEach(s => {
       const u = s.url || s;
       if (u && !seenUrls.has(u)) {
@@ -2847,4 +2870,31 @@ function showToast(msg) {
     toast.style.opacity = '0';
     setTimeout(() => toast.style.display = 'none', 200);
   }, 2200);
+}
+
+
+function getMatchingStandardsAttachments(title, std) {
+  const text = ((title || '') + ' ' + (std || '')).toLowerCase();
+  if (text.includes('נקי') || text.includes('צבע') || text.includes('פסולת') || text.includes('מכר')) {
+    return [{ url: 'standards/std_cleaning_handover.png', title: 'תרשים חוק המכר ומפרט כללי – מסירה, ניקיון ופינוי פסולת', standard: 'חוק המכר (דירות) ומפרט כללי' }];
+  }
+  if (text.includes('חשמל') || text.includes('הארק') || text.includes('לוח')) {
+    return [{ url: 'standards/std_electrical_board_regs.png', title: 'תרשים תקנות החשמל - לוחות והארקות', standard: 'תקנות החשמל' }];
+  }
+  if (text.includes('ממד') || text.includes('ממ"ד') || text.includes('הדף')) {
+    return [{ url: 'standards/std_mamad_doors_4422.png', title: 'תרשים ת"י 4422 - דלתות וחלונות ממ"ד', standard: 'ת"י 4422' }];
+  }
+  if (text.includes('ריצוף') || text.includes('שיפוע') || text.includes('אריח')) {
+    return [{ url: 'standards/t1555_3_figure_5.jpeg', title: 'תקן 1555 חלק 3 - שיפועי ריצוף ומישקים', standard: 'ת"י 1555 חלק 3' }];
+  }
+  if (text.includes('חלון') || text.includes('אלומיניום') || text.includes('תריס')) {
+    return [{ url: 'standards/std_aluminum_1068_4068.png', title: 'תרשים ת"י 1068 ות"י 4068 - חלונות אלומיניום', standard: 'ת"י 4068' }];
+  }
+  if (text.includes('דלת') || text.includes('משקוף') || text.includes('מנעול')) {
+    return [{ url: 'standards/std_door_hardware_5044.png', title: 'תרשים ת"י 5044 - פרזול ומנעולי דלתות', standard: 'ת"י 5044' }];
+  }
+  if (text.includes('נקז') || text.includes('אסלה') || text.includes('סיפון') || text.includes('צנרת')) {
+    return [{ url: 'standards/std_plumbing_sanitary_1205.png', title: 'תרשים ת"י 1205 והל"ת - מתקני תברואה וניקוז', standard: 'ת"י 1205' }];
+  }
+  return [{ url: 'standards/std_cleaning_handover.png', title: 'תרשים תקן רשמי ומפרט מכר', standard: std || 'מפרט כללי ותקן רשמי' }];
 }

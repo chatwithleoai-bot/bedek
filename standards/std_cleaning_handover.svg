@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2942" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f1f5f9" />
+  
+  <!-- Header Bar -->
+  <rect width="800" height="75" fill="url(#bg)" />
+  <text x="760" y="32" font-family="Arial, sans-serif" font-size="19" font-weight="bold" fill="#ffffff" text-anchor="end">תקן ישראלי רשמי וחוק המכר (דירות) – מסירה, ניקיון ופינוי פסולת</text>
+  <text x="760" y="58" font-family="Arial, sans-serif" font-size="13" fill="#93c5fd" text-anchor="end">מפרט כללי פרק 00 סעיף 00.70 • חוק המכר (דירות) תשל"ג-1973 סעיף 4 • צו מכר דירות</text>
+  <rect x="0" y="73" width="800" height="4" fill="#c29438" />
+
+  <!-- Main Content Card 1: חוק המכר וצו מכר דירות -->
+  <g transform="translate(415, 95)" filter="url(#shadow)">
+    <rect width="355" height="185" rx="8" fill="url(#cardBg)" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect width="355" height="35" rx="8" fill="#1e3a8a" />
+    <rect y="25" width="355" height="10" fill="#1e3a8a" />
+    <text x="340" y="24" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="end">חוק המכר (דירות) – מסירת דירה נקייה וראויה</text>
+    
+    <text x="340" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f2942" text-anchor="end">• חובת מסירה נקייה ותקינה:</text>
+    <text x="340" y="76" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">הקבלן מחויב למסור את הדירה כשהיא נקייה לחלוטין</text>
+    <text x="340" y="93" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">משיירי טיח, מליטה, כתמי צבע ופסולת בנייה.</text>
+    
+    <text x="340" y="118" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f2942" text-anchor="end">• אי-התאמה יסודית במסירה:</text>
+    <text x="340" y="136" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">לכלוך, שיירי בטון בצנרת, פגיעות בגלזורה ושאריות</text>
+    <text x="340" y="153" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">מליטה מהווים אי-התאמה לפי סעיף 4 לחוק המכר.</text>
+    <text x="340" y="172" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="end">חובה להסיר ללא גרימת שריטות או נזק לאלמנטים!</text>
+  </g>
+
+  <!-- Main Content Card 2: מפרט כללי פרק 00.70 -->
+  <g transform="translate(30, 95)" filter="url(#shadow)">
+    <rect width="365" height="185" rx="8" fill="url(#cardBg)" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect width="365" height="35" rx="8" fill="#1e3a8a" />
+    <rect y="25" width="365" height="10" fill="#1e3a8a" />
+    <text x="350" y="24" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="end">מפרט כללי לעבודות בנייה (סעיף 00.70)</text>
+    
+    <text x="350" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f2942" text-anchor="end">• ניקוי שוטף ופינוי אתר:</text>
+    <text x="350" y="76" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">הקבלן ינקה את המבנה וסביבתו מכל שיירי חומרי בניין,</text>
+    <text x="350" y="93" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">פסולת, אשפה, ארגזים ולוחות עזר.</text>
+    
+    <text x="350" y="118" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f2942" text-anchor="end">• ניקוי משטחים ואביזרים גמורים:</text>
+    <text x="350" y="136" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">ניקוי מושלם של זגוגיות, פרופילי אלומיניום, דלתות,</text>
+    <text x="350" y="153" font-family="Arial, sans-serif" font-size="11.5" fill="#334155" text-anchor="end">מתקני אינסטלציה סניטרית, ריצוף וחיפוי קרמיקה.</text>
+    <text x="350" y="172" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2563eb" text-anchor="end">המסירה תבוצע ברמת ניקיון המאפשרת שימוש מיידי.</text>
+  </g>
+
+  <!-- Bottom Detailed Requirements Grid -->
+  <g transform="translate(30, 295)" filter="url(#shadow)">
+    <rect width="740" height="185" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect width="740" height="30" rx="8" fill="#334155" />
+    <rect y="20" width="740" height="10" fill="#334155" />
+    <text x="725" y="21" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="end">פירוט דרישות ניקיון לפי רכיבי המבנה (תקנים רשמיים)</text>
+    
+    <!-- Col 1: ריצוף וחיפוי -->
+    <g transform="translate(495, 40)">
+      <rect width="230" height="130" rx="5" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="215" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="end">ריצוף וחיפוי (ת"י 1555)</text>
+      <text x="215" y="42" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- הסרת שיירי רובה ומלט מפני אריחים.</text>
+      <text x="215" y="60" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- איסור שימוש בחומצות הפוגעות בגלזורה.</text>
+      <text x="215" y="78" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- ניקוי מישקים ואיטום גמיש במפגשים.</text>
+      <text x="215" y="96" font-family="Arial, sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="end">- סילוק כתמי חלודה ושמנים.</text>
+      <text x="215" y="115" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#0f2942" text-anchor="end">ת"י 1555 חלק 3 סעיף 4.7</text>
+    </g>
+
+    <!-- Col 2: אלומיניום וחלונות -->
+    <g transform="translate(255, 40)">
+      <rect width="230" height="130" rx="5" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="215" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="end">אלומיניום וזכוכית (ת"י 4068)</text>
+      <text x="215" y="42" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- ניקוי מסילות מגרגרי חול ומליטה.</text>
+      <text x="215" y="60" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- חרירי ניקוז פתוחים ונקיים לחלוטין.</text>
+      <text x="215" y="78" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- הסרת נתזי צבע ושאריות מדבקות.</text>
+      <text x="215" y="96" font-family="Arial, sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="end">- אטמי EPDM נקיים וללא צבע.</text>
+      <text x="215" y="115" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#0f2942" text-anchor="end">ת"י 4068 חלק 1 סעיף 4.1</text>
+    </g>
+
+    <!-- Col 3: אינסטלציה ודלתות -->
+    <g transform="translate(15, 40)">
+      <rect width="230" height="130" rx="5" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="215" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="end">כלים סניטריים ודלתות (ת"י 1205/5044)</text>
+      <text x="215" y="42" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- איסור מוחלט לשפוך מלט ומליטה לנקזים.</text>
+      <text x="215" y="60" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- קופסאות מחסום רצפה נקיות מפסולת.</text>
+      <text x="215" y="78" font-family="Arial, sans-serif" font-size="10.5" fill="#334155" text-anchor="end">- משקופי דלתות ופרזול נקיים מנתזי צבע.</text>
+      <text x="215" y="96" font-family="Arial, sans-serif" font-size="10.5" fill="#b91c1c" text-anchor="end">- קבועות סניטריות מבריקות וללא סתימות.</text>
+      <text x="215" y="115" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#0f2942" text-anchor="end">הל"ת סעיף 3.2.4 ות"י 5044</text>
+    </g>
+  </g>
+</svg>

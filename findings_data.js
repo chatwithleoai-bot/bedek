@@ -24530,7 +24530,7 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "פרופילי האלומיניום נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "חוק המכר (דירות) תשל\"ג-1973 ות\"י 4068 חלק 1 סעיף 4.1",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
@@ -24540,12 +24540,12 @@ window.REPORTO_DB = {
       "std_image": "standards/std_aluminum_1068_4068.png",
       "reporto_images": [
         {
-          "id": "XnlQb9KzJcAyVChnQ9Bb_diag",
+          "id": "img_XnlQb9KzJcAyVChnQ9Bb",
           "url": "standards/std_aluminum_1068_4068.png",
           "path": "standards/std_aluminum_1068_4068.png",
           "fileName": "std_aluminum_1068_4068.png",
-          "title": "תרשים ת\"י 1068 ות\"י 4068 - פתחי ניקוז במסילה ואטמי EPDM לחלונות אלומיניום",
-          "mimeType": "image/png"
+          "title": "תרשים ת\"י 4068 וחוק המכר - ניקיון מסילות ופרופילי אלומיניום משיירי מליטה וצבע",
+          "standard": "חוק המכר (דירות) תשל\"ג-1973 ות\"י 4068 חלק 1 סעיף 4.1"
         }
       ]
     },
@@ -24554,22 +24554,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "משקוף דלת הכניסה נמצא עם שיירי צבע וחומרי בניין",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "חוק המכר (דירות) תשל\"ג-1973 ות\"י 5044 חלק 2 סעיף 3.2.4",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_door_hardware_5044.png",
       "reporto_images": [
         {
-          "id": "dL3NXD4H96597qaYdxdE_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים ת\"י 23 חלק 2 ות\"י 5044 - מרווח תחתית משקוף 3-5 מ\"מ ואיטום מסטיק",
-          "mimeType": "image/png"
+          "id": "img_dL3NXD4H96597qaYdxdE",
+          "url": "standards/std_door_hardware_5044.png",
+          "path": "standards/std_door_hardware_5044.png",
+          "fileName": "std_door_hardware_5044.png",
+          "title": "תרשים ת\"י 5044 וחוק המכר - מסירה נקייה של דלתות ומשקופים משיירי צבע ומליטה",
+          "standard": "חוק המכר (דירות) תשל\"ג-1973 ות\"י 5044 חלק 2 סעיף 3.2.4"
         }
       ]
     },
@@ -24578,7 +24578,7 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "אביזרי החשמל נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "תקנות החשמל וחוק המכר (דירות) - איסור צביעת אביזרים ומסירה נקייה",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
@@ -24588,12 +24588,12 @@ window.REPORTO_DB = {
       "std_image": "standards/std_electrical_board_regs.png",
       "reporto_images": [
         {
-          "id": "MdNB5fMmiPv3u58wIdFD_diag",
+          "id": "img_MdNB5fMmiPv3u58wIdFD",
           "url": "standards/std_electrical_board_regs.png",
           "path": "standards/std_electrical_board_regs.png",
           "fileName": "std_electrical_board_regs.png",
-          "title": "תרשים תקנות החשמל - לוחות חשמל, הארקת דלת ומקרא מעגלים",
-          "mimeType": "image/png"
+          "title": "תרשים תקנות החשמל וחוק המכר - אביזרי חשמל ומפסקים נקיים ללא שיירי צבע",
+          "standard": "תקנות החשמל וחוק המכר (דירות) - איסור צביעת אביזרים ומסירה נקייה"
         }
       ]
     },
@@ -24602,22 +24602,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "כלים סניטרים נמצאו עם שיירי צבע וחומרי בניין",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "הוראות למיתקני תברואה (הל\"ת) סעיף 3.2.4 וחוק המכר (דירות)",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_plumbing_sanitary_1205.png",
       "reporto_images": [
         {
-          "id": "xkltDdrZvsL9D0FtNWOF_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים מפרט טכני ותקן רשמי - איכות בנייה והתאמה למפרט",
-          "mimeType": "image/png"
+          "id": "img_xkltDdrZvsL9D0FtNWOF",
+          "url": "standards/std_plumbing_sanitary_1205.png",
+          "path": "standards/std_plumbing_sanitary_1205.png",
+          "fileName": "std_plumbing_sanitary_1205.png",
+          "title": "תרשים ת\"י 1205 והל\"ת - קבועות סניטריות נקיות מחומרי מליטה וצבע",
+          "standard": "הוראות למיתקני תברואה (הל\"ת) סעיף 3.2.4 וחוק המכר (דירות)"
         }
       ]
     },
@@ -24626,7 +24626,7 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "משקוף דלת הממ\"ד נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "ת\"י 4422 ומפרטי פקע\"ר וחוק המכר - מסירה תקינה ונקייה",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
@@ -24636,12 +24636,12 @@ window.REPORTO_DB = {
       "std_image": "standards/std_mamad_doors_4422.png",
       "reporto_images": [
         {
-          "id": "GSiXpz6u5iVOhFfxTiXG_diag",
+          "id": "img_GSiXpz6u5iVOhFfxTiXG",
           "url": "standards/std_mamad_doors_4422.png",
           "path": "standards/std_mamad_doors_4422.png",
           "fileName": "std_mamad_doors_4422.png",
-          "title": "תרשים ת\"י 4422 - דלתות הדף וגזים בממ\"ד, אטם EPDM רציף ונעילת בריחים",
-          "mimeType": "image/png"
+          "title": "תרשים ת\"י 4422 - דלתות ומשקופי ממ\"ד ואטמי גזים נקיים משיירי צבע ומליטה",
+          "standard": "ת\"י 4422 ומפרטי פקע\"ר וחוק המכר - מסירה תקינה ונקייה"
         }
       ]
     },
@@ -24650,22 +24650,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "משקוף חלון הממ\"ד נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "ת\"י 4422 ומפרטי פקע\"ר - איסור נתזי צבע על אטמים ומסילות",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_aluminum_1068_4068.png",
+      "std_image": "standards/std_mamad_window_4422.png",
       "reporto_images": [
         {
-          "id": "fHS7btz8L6pWdepUs6UI_diag",
-          "url": "standards/std_aluminum_1068_4068.png",
-          "path": "standards/std_aluminum_1068_4068.png",
-          "fileName": "std_aluminum_1068_4068.png",
-          "title": "תרשים ת\"י 1068 ות\"י 4068 - פתחי ניקוז במסילה ואטמי EPDM לחלונות אלומיניום",
-          "mimeType": "image/png"
+          "id": "img_fHS7btz8L6pWdepUs6UI",
+          "url": "standards/std_mamad_window_4422.png",
+          "path": "standards/std_mamad_window_4422.png",
+          "fileName": "std_mamad_window_4422.png",
+          "title": "תרשים ת\"י 4422 - חלונות הדף בממ\"ד נקיים ומשומנים ללא נתזי צבע ומליטה",
+          "standard": "ת\"י 4422 ומפרטי פקע\"ר - איסור נתזי צבע על אטמים ומסילות"
         }
       ]
     },
@@ -24674,22 +24674,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "דלתות פנים נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "ת\"י 5044 חלק 2 סעיף 3.2.4 ומפרט כללי פרק 08",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_door_hardware_5044.png",
       "reporto_images": [
         {
-          "id": "IkCb1o6qUh9E7lWmRCck_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים ת\"י 23 חלק 2 ות\"י 5044 - מרווח תחתית משקוף 3-5 מ\"מ ואיטום מסטיק",
-          "mimeType": "image/png"
+          "id": "img_IkCb1o6qUh9E7lWmRCck",
+          "url": "standards/std_door_hardware_5044.png",
+          "path": "standards/std_door_hardware_5044.png",
+          "fileName": "std_door_hardware_5044.png",
+          "title": "תרשים ת\"י 5044 ומפרט כללי - כנפי דלתות ומשקופים נקיים משיירי צבע",
+          "standard": "ת\"י 5044 חלק 2 סעיף 3.2.4 ומפרט כללי פרק 08"
         }
       ]
     },
@@ -24698,22 +24698,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "קירות חוץ נמצאו עם שיירי צבע וחומרי בניין",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "מפרט כללי לעבודות בנייה סעיף 00.70 וחוק המכר (דירות)",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_cleaning_handover.png",
       "reporto_images": [
         {
-          "id": "LrZzMeobFhtJJivyO5oP_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים מפרט טכני ותקן רשמי - איכות בנייה והתאמה למפרט",
-          "mimeType": "image/png"
+          "id": "img_LrZzMeobFhtJJivyO5oP",
+          "url": "standards/std_cleaning_handover.png",
+          "path": "standards/std_cleaning_handover.png",
+          "fileName": "std_cleaning_handover.png",
+          "title": "תרשים מפרט כללי וחוק המכר - ניקוי ופינוי שיירי מליטה וצבע מקירות חוץ",
+          "standard": "מפרט כללי לעבודות בנייה סעיף 00.70 וחוק המכר (דירות)"
         }
       ]
     },
@@ -24722,22 +24722,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "ארונות מטבח נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "מפרט כללי לעבודות בנייה סעיף 00.70 וחוק המכר (דירות)",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_cleaning_handover.png",
       "reporto_images": [
         {
-          "id": "ar74hBo6m3y7boZu2zje_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים מפרט טכני ותקן רשמי - איכות בנייה והתאמה למפרט",
-          "mimeType": "image/png"
+          "id": "img_ar74hBo6m3y7boZu2zje",
+          "url": "standards/std_cleaning_handover.png",
+          "path": "standards/std_cleaning_handover.png",
+          "fileName": "std_cleaning_handover.png",
+          "title": "תרשים מפרט כללי וחוק המכר - ניקיון מושלם של נגרות וארונות מטבח",
+          "standard": "מפרט כללי לעבודות בנייה סעיף 00.70 וחוק המכר (דירות)"
         }
       ]
     },
@@ -24746,22 +24746,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "ארונות חדר רחצה נמצאו עם שיירי צבע",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "מפרט כללי לעבודות בנייה סעיף 00.70 וחוק המכר (דירות)",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_cleaning_handover.png",
       "reporto_images": [
         {
-          "id": "pvEcJGrU1lkx6FSkfzp9_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים מפרט טכני ותקן רשמי - איכות בנייה והתאמה למפרט",
-          "mimeType": "image/png"
+          "id": "img_pvEcJGrU1lkx6FSkfzp9",
+          "url": "standards/std_cleaning_handover.png",
+          "path": "standards/std_cleaning_handover.png",
+          "fileName": "std_cleaning_handover.png",
+          "title": "תרשים מפרט כללי וחוק המכר - ניקיון ארונות חדר רחצה מחומרי מליטה וצבע",
+          "standard": "מפרט כללי לעבודות בנייה סעיף 00.70 וחוק המכר (דירות)"
         }
       ]
     },
@@ -24770,22 +24770,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "בשעת ביצוע עבודות הצביעה נצבעו גם ---.",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט כללי סעיף 00.70",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית.",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_cleaning_handover.png",
       "reporto_images": [
         {
-          "id": "QMOcUvQqfmBqfctoZrES_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים מפרט טכני ותקן רשמי - איכות בנייה והתאמה למפרט",
-          "mimeType": "image/png"
+          "id": "img_QMOcUvQqfmBqfctoZrES",
+          "url": "standards/std_cleaning_handover.png",
+          "path": "standards/std_cleaning_handover.png",
+          "fileName": "std_cleaning_handover.png",
+          "title": "תרשים חוק המכר ומפרט כללי - הגנה על אלמנטים ומסירה נקייה ללא צביעה שגויה",
+          "standard": "חוק המכר (דירות) תשל\"ג-1973 ומפרט כללי סעיף 00.70"
         }
       ]
     },
@@ -24794,22 +24794,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "מלבן הדלת נמצא עם שאריות צבע",
-      "std": "תקן 5044 חלק 2 סעיף 3.3.1.",
+      "std": "תקן 5044 חלק 2 סעיף 3.3.1 וחוק המכר (דירות)",
       "rec": "יש להסיר את הצבע הלקוי ולחדש צביעה עם צבע יסוד מתאים עד  לגימור חלק ואסטתי",
       "note": "",
       "inote": "",
       "ut": "קומפ׳",
       "up": 250,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_door_hardware_5044.png",
       "reporto_images": [
         {
-          "id": "RqmKbV9T4WChBv8VcZQw_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים ת\"י 23 חלק 2 ות\"י 5044 - מרווח תחתית משקוף 3-5 מ\"מ ואיטום מסטיק",
-          "mimeType": "image/png"
+          "id": "img_RqmKbV9T4WChBv8VcZQw",
+          "url": "standards/std_door_hardware_5044.png",
+          "path": "standards/std_door_hardware_5044.png",
+          "fileName": "std_door_hardware_5044.png",
+          "title": "תרשים ת\"י 5044 - מלבן ומשקוף דלת נקיים מכל שיירי צבע ומלט",
+          "standard": "תקן 5044 חלק 2 סעיף 3.3.1 וחוק המכר (דירות)"
         }
       ]
     },
@@ -24818,7 +24818,7 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "ריצוף הבית נמצא עם שיירי צבע וחומרי בניין",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "ת\"י 1555 חלק 3 סעיף 4.7 וחוק המכר (דירות)",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית ובנידת הצורך להחליף",
       "note": "",
       "inote": "",
@@ -24828,12 +24828,12 @@ window.REPORTO_DB = {
       "std_image": "standards/t1555_3_figure_5.jpeg",
       "reporto_images": [
         {
-          "id": "i72BeFezsJIR9X4nx947_diag",
+          "id": "img_i72BeFezsJIR9X4nx947",
           "url": "standards/t1555_3_figure_5.jpeg",
           "path": "standards/t1555_3_figure_5.jpeg",
           "fileName": "t1555_3_figure_5.jpeg",
-          "title": "תרשים ת\"י 1555 חלק 3 - שיפועי ריצוף ורוחב מישקים",
-          "mimeType": "image/jpeg"
+          "title": "תרשים ת\"י 1555 חלק 3 - ניקוי סופי של משטחי ריצוף ומישקים משיירי מליטה וצבע",
+          "standard": "ת\"י 1555 חלק 3 סעיף 4.7 וחוק המכר (דירות)"
         }
       ]
     },
@@ -24842,7 +24842,7 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "ריצוף הדירה נמצא עם כיתמי חלודה",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "ת\"י 1555 חלק 3 וחוק המכר (דירות) - מסירה נקייה מפגמים וכתמים",
       "rec": "נדרש להסיר שיירי צבע בצורה מקצועית ואסטתית",
       "note": "",
       "inote": "",
@@ -24852,12 +24852,12 @@ window.REPORTO_DB = {
       "std_image": "standards/t1555_3_figure_5.jpeg",
       "reporto_images": [
         {
-          "id": "hHm7n2g9oTp15ooVWsaV_diag",
+          "id": "img_hHm7n2g9oTp15ooVWsaV",
           "url": "standards/t1555_3_figure_5.jpeg",
           "path": "standards/t1555_3_figure_5.jpeg",
           "fileName": "t1555_3_figure_5.jpeg",
-          "title": "תרשים ת\"י 1555 חלק 3 - שיפועי ריצוף ורוחב מישקים",
-          "mimeType": "image/jpeg"
+          "title": "תרשים ת\"י 1555 חלק 3 - הסרת כתמי חלודה ושמנים מאריחים ללא פגיעה בציפוי",
+          "standard": "ת\"י 1555 חלק 3 וחוק המכר (דירות) - מסירה נקייה מפגמים וכתמים"
         }
       ]
     },
@@ -24866,22 +24866,22 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "שאריות פסולת נמצאו",
-      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט טכני מחייב - מסירה נקייה ותקינה",
+      "std": "חוק המכר (דירות) תשל\"ג-1973 ומפרט כללי סעיף 00.70 - פינוי פסולת",
       "rec": "יש לבצע ניקיון יסודי ומקצועי של הרכיב, הסרת שאריות בטון, רובה, טיח וצבע ללא שריטות.",
       "note": "",
       "inote": "",
       "ut": "קומפ'",
       "up": 300,
       "uq": 1,
-      "std_image": "standards/std_doors_clearance_5044_23.png",
+      "std_image": "standards/std_cleaning_handover.png",
       "reporto_images": [
         {
-          "id": "nIJ9JBF8BmmdfNltdx9z_diag",
-          "url": "standards/std_doors_clearance_5044_23.png",
-          "path": "standards/std_doors_clearance_5044_23.png",
-          "fileName": "std_doors_clearance_5044_23.png",
-          "title": "תרשים מפרט טכני ותקן רשמי - איכות בנייה והתאמה למפרט",
-          "mimeType": "image/png"
+          "id": "img_nIJ9JBF8BmmdfNltdx9z",
+          "url": "standards/std_cleaning_handover.png",
+          "path": "standards/std_cleaning_handover.png",
+          "fileName": "std_cleaning_handover.png",
+          "title": "תרשים חוק המכר ומפרט כללי סעיף 00.70 - פינוי מוחלט של פסולת בניין מהאתר",
+          "standard": "חוק המכר (דירות) תשל\"ג-1973 ומפרט כללי סעיף 00.70 - פינוי פסולת"
         }
       ]
     },
@@ -24890,7 +24890,7 @@ window.REPORTO_DB = {
       "r": 0,
       "c": 19,
       "name": "פרופילי האלומיניום ומשקופי הדלתות נמצאו עם שאריות צבע",
-      "std": "[תקן 4068 חלק 1 סעיף 4.1]\r\n\"כל המוצרים יהיו שלמים ונקיים, ולא יהיו בהם כל סימנים של פגיעות מכניות\"",
+      "std": "תקן 4068 חלק 1 סעיף 4.1 ותקן 5044 חלק 2",
       "rec": "לנקות בצורה מקצועית  על פי התקן ובמידת הצורך להחליף אם נדרש",
       "note": "",
       "inote": "",
@@ -24900,12 +24900,12 @@ window.REPORTO_DB = {
       "std_image": "standards/std_aluminum_1068_4068.png",
       "reporto_images": [
         {
-          "id": "k8o1Bf4tmR6o8ottIbo9_diag",
+          "id": "img_k8o1Bf4tmR6o8ottIbo9",
           "url": "standards/std_aluminum_1068_4068.png",
           "path": "standards/std_aluminum_1068_4068.png",
           "fileName": "std_aluminum_1068_4068.png",
-          "title": "תרשים ת\"י 1068 ות\"י 4068 - פתחי ניקוז במסילה ואטמי EPDM לחלונות אלומיניום",
-          "mimeType": "image/png"
+          "title": "תרשים ת\"י 4068 ות\"י 5044 - ניקיון מוצרים ומסגרות ללא סימני פגיעות ושיירי צבע",
+          "standard": "תקן 4068 חלק 1 סעיף 4.1 ותקן 5044 חלק 2"
         }
       ]
     },
